@@ -57,10 +57,26 @@ def restaurants():
     )
     return response
 
+@app.route('/restaurants/<int:id>', methods = ['GET'])
+def restaurants_by_id(id):
+    restaurants = Restaurants.query.filter(Restaurants.id == id).first()
+
+    if restaurants:
+        response = make_response(
+            restaurants.to_dict(),
+            200
+        )
+    else:
+        response = make_response(
+            {'Error': 'Restaurant not found'},
+            404
+        )
+    return response
+
 @app.route('/sandwiches', methods = ['GET'])
 def sandwiches():
     sandwiches = Sandwiches.query.all()
-    sandwiches_dict = [sandwich.to_dict() for sandwich in sandwiches]
+    sandwiches_dict = [sandwich.to_dict(only = ('sandwich_name', )) for sandwich in sandwiches]
 
     response = make_response(
         sandwiches_dict,
@@ -68,7 +84,23 @@ def sandwiches():
     )
     return response
 
-app.route('/checkin', methods = ['GET'])
+@app.route('/sandwiches/<int:id>', methods = ['GET'])
+def sandwiches_by_id(id):
+    sandwiches = Sandwiches.query.filter(Sandwiches.id == id).first()
+
+    if sandwiches:
+        response = make_response(
+            sandwiches.to_dict(),
+            200
+        )
+    else:
+        response = make_response(
+            {'error': 'Sandwich not found'},
+            404
+        )
+    return response
+
+@app.route('/checkin', methods = ['GET'])
 def checkins():
     checkins = CheckIn.query.all()
     checkins_dict = [checkin.to_dict() for checkin in checkins]

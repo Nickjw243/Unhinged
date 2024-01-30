@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useFormik } from "formik"
 import * as yup from "yup"
 import ThemeContext from "./ThemeContext";
@@ -48,7 +48,39 @@ function Login() {
   return (
     <ThemeContext.Provider value = {loggedIn}>
       <div className="Login">
-        <h1>Project Client</h1>
+        <h1 classname = "login-title">Unhinged</h1>
+        <form onSubmit = {formik.handleSubmit}>
+          <input 
+            type = "text"
+            name = "email"
+            onChange={formik.handleChange}
+            value = {formik.values.email}
+            placeholder = "Email"
+            onBlur = {formik.handleBlur}>
+          </input>
+          <p>
+            {formik.touched.email && formik.errors.email ? (
+              <h3>{formik.errors.email}</h3>
+            ) : ('')}
+          </p>
+          <input 
+            type="password"
+            name="password"
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            placeholder="Password"
+            onBlur={formik.handleBlur}>
+          </input>
+          <p>
+            {formik.touched.password && formik.errors.password ? (
+                <h3>{formik.errors.password}</h3>
+            ) : ('')}
+          </p>
+          <button class="btn btn-danger" className="login_button" type="submit">Log In</button>
+        </form>
+        <button class="btn btn-outline-danger">
+          <Link className="link" to={`/signup`}>Sign Up Here</Link>
+        </button>
       </div>
     </ThemeContext.Provider>
   )

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # Standard library imports
-from random import randint, choice as rc
+from random import choice
 
 # Remote library imports
 
@@ -98,13 +98,14 @@ if __name__ == '__main__':
             ),
         ]
         db.session.add_all(sandwiches)
+        db.session.commit()
 
         print("Seeding Check Ins...")
 
         checkins = [
             CheckIn(
-                user_id = rc([new_user.id for new_user in new_users]),
-                sandwich_id = rc([sandwich.id for sandwich in sandwiches]),
+                user_id = choice([new_user.id for new_user in new_users]),
+                sandwich_id = choice([sandwich.id for sandwich in sandwiches]),
                 checkin_date = date.today()
             )
         ]
