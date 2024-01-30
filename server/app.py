@@ -49,7 +49,7 @@ def users():
 @app.route('/restaurants', methods = ['GET'])
 def restaurants():
     restaurants = Restaurants.query.all()
-    restaurants_dict = [restaurant.to_dict() for restaurant in restaurants]
+    restaurants_dict = [restaurant.to_dict(rules = ('-sandwich.checkin', )) for restaurant in restaurants]
 
     response = make_response(
         restaurants_dict,
@@ -79,6 +79,38 @@ def checkins():
     )
     return response
 
+@app.route('/login', methods = ['POST'])
+def users_by_email():
+    try:
+        form_data = request.get_json()
+        email = form_data['email']
+        password = form_data['password']
+        user = Users.query.filter(Users.user_email == email).first()
+
+        if user:
+            if password == user.passwordhash:
+                # login_body = user.to_dict(rules=('-swipes','-username','-passwordhash',))
+                login_body = user.to_dict(only=('id',))
+                response = make_response(
+                    login_body,
+                    200
+                )
+            else:
+                response = make_response(
+                    {"error": "wrong password"},
+                    401
+                )
+        else:
+            response = make_response(
+                {"error": "account does not exist"},
+                404
+            )
+    except:
+        response = make_response(
+            {"error": "account does not exist"},
+            404
+        )
+    return response
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
