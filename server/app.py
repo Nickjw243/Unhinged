@@ -3,19 +3,81 @@
 # Standard library imports
 
 # Remote library imports
-from flask import request
+from flask import make_response, request
 from flask_restful import Resource
 
 # Local imports
 from config import app, db, api
 # Add your model imports
-
+from models import db, Users, Restaurants, Sandwiches, CheckIn
 
 # Views go here!
 
-@app.route('/')
-def index():
-    return '<h1>Project Server</h1>'
+@app.route('/users', methods = ['GET', 'POST'])
+def users():
+    if request.method == 'GET':
+        users = Users.query.all()
+        users_dict = [user.to_dict(rules = ('-checkin',)) for user in users]
+
+        response = make_response(
+            users_dict,
+            200
+        )
+    elif request.method == 'POST':
+        try:
+            form_data = request.get_json()
+            new_user = Users(
+                username = form_data['username'],
+                user_email = form_data['user_email'],
+                password = form_data['password']
+            )
+            db.session.add(new_user)
+            db.session.commit()
+
+            response = make_response(
+                new_user.to_dict(),
+                201
+            )
+        except ValueError:
+            response = make_response(
+                {'Error': 'Validation error'},
+                400
+            )
+
+    return response
+
+@app.route('/restaurants', methods = ['GET'])
+def restaurants():
+    restaurants = Restaurants.query.all()
+    restaurants_dict = [restaurant.to_dict() for restaurant in restaurants]
+
+    response = make_response(
+        restaurants_dict,
+        200
+    )
+    return response
+
+@app.route('/sandwiches', methods = ['GET'])
+def sandwiches():
+    sandwiches = Sandwiches.query.all()
+    sandwiches_dict = [sandwich.to_dict() for sandwich in sandwiches]
+
+    response = make_response(
+        sandwiches_dict,
+        200
+    )
+    return response
+
+app.route('/checkin', methods = ['GET'])
+def checkins():
+    checkins = CheckIn.query.all()
+    checkins_dict = [checkin.to_dict() for checkin in checkins]
+
+    response = make_response(
+        checkins_dict,
+        200
+    )
+    return response
 
 
 if __name__ == '__main__':
