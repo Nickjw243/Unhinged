@@ -23,13 +23,23 @@ Unhinged is an app where a user can log different sandwiches from any restaurant
 <img width="592" alt="Screenshot 2024-01-29 at 9 19 59 PM" src="https://github.com/Nickjw243/Unhinged/assets/145048770/fa8bc105-c8b3-443f-9ed0-34c925ce455b">
 
 ## API Routes
+- CREATE -> /signup -> POST == Creates a new user account
+- READ -> /sandwiches/:id -> GET == Returns a list of sandwiches that you searched for
+- UPDATE -> /sandwiches/:id -> PATCH == Updates your profile with the sandwich you just checked in
+- DELETE -> /profile -> DELETE == Delete a sandwich from your list
+- READ -> /restaurants/:id -> GET == Returns a list of restaurants when searching for sandwich
+- READ -> /profile -> GET == Returns user profile and the sandwiches they have logged
 
 ## New Technologies
-useContext will be a new technology that I will be using 
+useContext will be a new technology that will be used in this project
 
 ## Stretch Goals
+- Add a map feature
+- Create a rating system to show the sandwich's average rating
+- Add more restaurants in other locations
 
 ## Trello
+![Screenshot 2024-01-30 at 9 55 01 AM](https://github.com/Nickjw243/Unhinged/assets/145048770/be009727-6e74-4f7a-a54e-c21af16b6db7)
 
 
 
