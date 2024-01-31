@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useFormik } from "formik"
 import * as yup from "yup"
-import ThemeContext from "./ThemeContext";
 
 function Login() {
 
@@ -34,6 +33,7 @@ function Login() {
                   console.log('you signed in')
                   setForm(formSchema)
                   setLoggedIn(user.id)
+                  // navSwipe(user.id)
                   } else {
                     console.log('Login failed: ', user)
                   }
@@ -45,8 +45,11 @@ function Login() {
     }
   })
 
+  // function navSwipe(id) {
+  //   Navigate('/sandwiches', { state: { loggedIn: id}})
+  // }
+
   return (
-    <ThemeContext.Provider value = {loggedIn}>
       <div className="Login">
         <h1 classname = "login-title">Unhinged</h1>
         <form onSubmit = {formik.handleSubmit}>
@@ -76,13 +79,14 @@ function Login() {
                 <h3>{formik.errors.password}</h3>
             ) : ('')}
           </p>
-          <button class="btn btn-danger" className="login_button" type="submit">Log In</button>
+          <button class="btn btn-danger" className="login_button" type="submit">
+            <Link className="link-to-sandwich-main" to={'/sandwiches'}>Log In</Link>
+          </button>
         </form>
         <button class="btn btn-outline-danger">
-          <Link className="link" to={`/signup`}>Sign Up Here</Link>
+          <Link className="link-to-signup" to={`/signup`}>Sign Up Here</Link>
         </button>
       </div>
-    </ThemeContext.Provider>
   )
 }
 

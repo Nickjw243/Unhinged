@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
+import { Link } from "react-router-dom"
 
 function SearchBar({placeholder, sandwiches}) {
 
@@ -38,11 +39,13 @@ function SearchBar({placeholder, sandwiches}) {
                 {filteredSandwiches.slice(0, 15).map((value, key) => {
                     return (
                     <a className="sandwichItem"> 
-                        <p>{value.sandwich_name}</p>
+                        <p>
+                            <Link className="link-to-sandwich-profile" to={`/sandwiches/${value.id}`}>{value.sandwich_name}</Link>
+                        </p>
                     </a>)
                 })}
             </div>
-)}
+            )}
         </div>
     )
 

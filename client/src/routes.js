@@ -19,7 +19,7 @@ const routes = [
         element: <SearchSandwiches />
     },
     {
-        path: "/search_restaurants",
+        path: "/restaurants",
         element: <SearchByRestaurant />
     },
     {

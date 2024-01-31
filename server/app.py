@@ -120,7 +120,7 @@ def users_by_email():
         user = Users.query.filter(Users.user_email == email).first()
 
         if user:
-            if password == user.passwordhash:
+            if password == user.password:
                 # login_body = user.to_dict(rules=('-swipes','-username','-passwordhash',))
                 login_body = user.to_dict(only=('id',))
                 response = make_response(
