@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import ThemeContext from "./ThemeContext";
+// import { useUser } from "./UserContext";
 import SearchBar from "./SearchBar";
 import SearchByRestaurant from "./SearchByRestaurant";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -9,12 +9,13 @@ function SearchSandwiches({loggedIn}) {
 // ./sandwiches
 
     // user ID state management
-    // let location = useLocation()
-    // let userID = location.state.loggedIn
-    // const Navigate = useNavigate()
+    console.log(loggedIn)
+    let location = useLocation()
+    let userID = location.state.loggedIn
+    const navigate = useNavigate()
     // user ID state management
 
-    const value = useContext(ThemeContext)
+    
     const [sandwiches, setSandwiches] = useState([])
     
 
@@ -26,6 +27,9 @@ function SearchSandwiches({loggedIn}) {
         })
     }, [])
 
+    function handleSandwichProfileNav() {
+        navigate('/sandwiches/:id', { state: { loggedIn: userID}})
+    }
     
 
     return (

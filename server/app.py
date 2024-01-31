@@ -100,15 +100,29 @@ def sandwiches_by_id(id):
         )
     return response
 
-@app.route('/checkin', methods = ['GET'])
+@app.route('/checkin', methods = ['GET', 'POST'])
 def checkins():
-    checkins = CheckIn.query.all()
-    checkins_dict = [checkin.to_dict() for checkin in checkins]
+    if request.method == 'GET':
+        checkins = CheckIn.query.all()
+        checkins_dict = [checkin.to_dict() for checkin in checkins]
 
-    response = make_response(
-        checkins_dict,
-        200
-    )
+        response = make_response(
+            checkins_dict,
+            200
+        )
+    elif request.method == 'POST':
+        form_data = request.get_json()
+        new_checkin = CheckIn(
+            user_id = form_data['user_id'],
+            sandwich_id = form_data['sandwich_id'],
+            checkin_date = form_data['checkin_date']
+        )
+        db.session.add(new_checkin)
+        db.session.commit()
+        response = make_response(
+            new_checkin.to_dict(),
+            201
+        )
     return response
 
 @app.route('/login', methods = ['POST'])

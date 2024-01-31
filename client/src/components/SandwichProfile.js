@@ -17,6 +17,21 @@ function SandwichProfile() {
         return <h1>Loading...</h1>
     }
 
+    // const handleCheckIn = (e) => {
+    //     e.preventDefault()
+    //     fetch('/checkin', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify({
+    //             user_id:
+    //             sandwich_id:
+    //             checkin_date:
+    //         })
+    //     })
+    // }
+
     return (
         <div className="Sandwich-Profile">
             <h1>Sandwich Profile</h1>
@@ -29,6 +44,11 @@ function SandwichProfile() {
                 src = {sandwich.image}
                 alt = {sandwich.sandwich_name}
                 ></img>
+            </div>
+            <div>
+                <button>
+                    Check In
+                </button>
             </div>
         </div>
     )

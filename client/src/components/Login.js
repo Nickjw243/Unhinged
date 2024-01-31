@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik"
 import * as yup from "yup"
 
 function Login() {
+
+  const navigate = useNavigate()
 
   const formSchema = yup.object().shape({
     email: yup.string().email("Invalid email").required("Please enter valid email"),
@@ -33,7 +35,7 @@ function Login() {
                   console.log('you signed in')
                   setForm(formSchema)
                   setLoggedIn(user.id)
-                  // navSwipe(user.id)
+                  navSwipe(user.id)
                   } else {
                     console.log('Login failed: ', user)
                   }
@@ -45,9 +47,9 @@ function Login() {
     }
   })
 
-  // function navSwipe(id) {
-  //   Navigate('/sandwiches', { state: { loggedIn: id}})
-  // }
+  function navSwipe(id) {
+    navigate('/sandwiches', { state: { loggedIn: id}})
+  }
 
   return (
       <div className="Login">
