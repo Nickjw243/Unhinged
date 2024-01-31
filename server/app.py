@@ -76,7 +76,7 @@ def restaurants_by_id(id):
 @app.route('/sandwiches', methods = ['GET'])
 def sandwiches():
     sandwiches = Sandwiches.query.all()
-    sandwiches_dict = [sandwich.to_dict(only = ('sandwich_name', )) for sandwich in sandwiches]
+    sandwiches_dict = [sandwich.to_dict() for sandwich in sandwiches]
 
     response = make_response(
         sandwiches_dict,

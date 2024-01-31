@@ -1,17 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
+import SearchIcon from '@mui/icons-material/Search';
+import CloseIcon from '@mui/icons-material/Close';
 
-function SearchBar({search, updateSearch}) {
+function SearchBar({placeholder, sandwiches}) {
 
+    const [filteredSandwiches, setFilteredSandwiches] = useState([])
+    const [wordEntered, setWordEntered] = useState("")
+
+    const handleFilter = (e) => {
+        const searchWord = e.target.value
+        setWordEntered(searchWord)
+        const newFilter = sandwiches.filter((value) => {
+            return value.sandwich_name.toLowerCase().includes(searchWord.toLowerCase())
+        })
+        if (searchWord === ""){
+            setFilteredSandwiches([])
+        } else {
+            setFilteredSandwiches(newFilter)
+        }
+    }
+
+    const clearInput = () => {
+        setFilteredSandwiches([])
+        setWordEntered("")
+    }
 
     return (
         <div className="sandwich-search">
-                <input
-                    type="text"
-                    id="search"
-                    placeholder="Search for Sandwiches"
-                    onChange={updateSearch} value={search} >
-                </input>
+            <div className="searchInputs">
+                <input type="text" placeholder={placeholder} value={wordEntered} onChange={handleFilter} />
+                <div className="searchIcon">
+                    {filteredSandwiches.length === 0 ? <SearchIcon /> : <CloseIcon id="clearBtn" onClick={clearInput}/>}
+                </div>
             </div>
+            {filteredSandwiches.length != 0 && (
+            <div className="dataResult">
+                {filteredSandwiches.slice(0, 15).map((value, key) => {
+                    return (
+                    <a className="sandwichItem"> 
+                        <p>{value.sandwich_name}</p>
+                    </a>)
+                })}
+            </div>
+)}
+        </div>
     )
 
 }
