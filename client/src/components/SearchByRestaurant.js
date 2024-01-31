@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
+import { Link } from "react-router-dom";
 
 function SearchByRestaurant() {
 
@@ -49,7 +50,9 @@ function SearchByRestaurant() {
                 {filteredRestaurants.slice(0, 15).map((value, key) => {
                     return (
                     <a className="restaurantItem"> 
-                        <p>{value.restaurant_name}</p>
+                        <p>
+                            <Link className="link-to-restaurant-list" to={`/restaurants/${value.id}`}>{value.restaurant_name}</Link>
+                        </p>
                     </a>)
                 })}
             </div>

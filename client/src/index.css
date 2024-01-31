@@ -90,3 +90,30 @@ a:hover {
 #clearBtn {
   cursor: pointer;
 }
+
+.sandwich-img-div {
+  height: 100px;
+  width: 200px;
+}
+
+.sandwich-img {
+  height:500px
+}
+
+.sandwich-title {
+  display: flex;
+  position: relative;
+}
+
+.restaurant-sandwich-image {
+  height: 100px;
+}
+
+.restaurant-sandwich-div {
+  margin:auto;
+  display:inline-block;
+  padding: 2rem 1rem;
+  text-align: center;
+  /* justify-content: flex-start;
+  align-items: center; */
+}
