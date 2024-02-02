@@ -72,7 +72,6 @@ class CheckIn(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key = True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     sandwich_id = db.Column(db.Integer, db.ForeignKey('sandwiches.id'))
-    checkin_date = db.Column(db.Date)
 
     # relationships
     user = db.relationship("Users", back_populates = "checkin")

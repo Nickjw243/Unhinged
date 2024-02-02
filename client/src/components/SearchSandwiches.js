@@ -1,23 +1,19 @@
 import React, { useContext, useEffect, useState } from "react";
 // import { useUser } from "./UserContext";
 import SearchBar from "./SearchBar";
-import SearchByRestaurant from "./SearchByRestaurant";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-
-function SearchSandwiches({loggedIn}) {
+function SearchSandwiches() {
 // ./sandwiches
 
     // user ID state management
-    console.log(loggedIn)
-    let location = useLocation()
-    let userID = location.state.loggedIn
+    const { state } = useLocation()
+    const { currentUser } = state
     const navigate = useNavigate()
+    console.log(currentUser)
     // user ID state management
 
-    
     const [sandwiches, setSandwiches] = useState([])
-    
 
     useEffect(() => {
         fetch('/sandwiches')
@@ -28,20 +24,27 @@ function SearchSandwiches({loggedIn}) {
     }, [])
 
     function handleSandwichProfileNav() {
-        navigate('/sandwiches/:id', { state: { loggedIn: userID}})
+        navigate('/sandwiches/:id', { state: { currentUser }})
     }
-    
+
+    function handleProfileNav() {
+        navigate(`/user_profile/${currentUser.id}`, { state: { currentUser }})
+    }
 
     return (
         <div className = "Sandwich-main">
-            <h1>Sandwich Search</h1>
+            <header>Welcome, {currentUser.username}!
+            <br />
+                <button onClick={handleProfileNav}>Profile</button>
+            </header>
+            <br />
             <div>
-                <button>
-                    <Link className="link-to-restaurant-search" to={'/restaurants'}>Search by Restaurant</Link>
+                <button onClick={(() => {
+                    navigate('/restaurants', { state: { currentUser }})})}>Search by Restaurant
                 </button>
             </div>
             <div>
-                <SearchBar placeholder="Search for Sandwich..." sandwiches={sandwiches} />
+                <SearchBar placeholder="Search for Sandwich..." sandwiches={sandwiches} handleSandwichProfileNav = {handleSandwichProfileNav}/>
             </div>
         </div>
     )

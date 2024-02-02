@@ -115,13 +115,28 @@ def checkins():
         new_checkin = CheckIn(
             user_id = form_data['user_id'],
             sandwich_id = form_data['sandwich_id'],
-            checkin_date = form_data['checkin_date']
         )
         db.session.add(new_checkin)
         db.session.commit()
         response = make_response(
             new_checkin.to_dict(),
             201
+        )
+    return response
+
+@app.route('/checkin/<int:id>', methods = ['GET'])
+def checkins_by_id(id):
+    checkins = CheckIn.query.filter(CheckIn.id == id).first()
+
+    if checkins:
+        response = make_response(
+            checkins.to_dict(),
+            200
+        )
+    else:
+        response = make_response(
+            {'error': 'Checkin not found'},
+            404
         )
     return response
 

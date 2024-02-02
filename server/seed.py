@@ -106,7 +106,6 @@ if __name__ == '__main__':
             CheckIn(
                 user_id = choice([new_user.id for new_user in new_users]),
                 sandwich_id = choice([sandwich.id for sandwich in sandwiches]),
-                checkin_date = date.today()
             )
         ]
 

@@ -4,6 +4,7 @@ import SandwichProfile from "./components/SandwichProfile"
 import SearchByRestaurant from "./components/SearchByRestaurant"
 import SearchSandwiches from "./components/SearchSandwiches"
 import SignUp from "./components/SignUp"
+import UserProfile from "./components/UserProfile"
 
 
 const routes = [
@@ -30,6 +31,10 @@ const routes = [
     {
         path: "/restaurants/:id",
         element: <RestaurantList />
+    },
+    {
+        path: "/user_profile/:id",
+        element: <UserProfile />
     }
 ]
 

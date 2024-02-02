@@ -1,10 +1,19 @@
 import React, { useState } from "react";
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
-import { Link } from "react-router-dom"
+import { Link, useLocation, useNavigate} from "react-router-dom"
+import { useUser } from "./UserContext";
 
 function SearchBar({placeholder, sandwiches}) {
 
+    // user ID state management
+    const { state } = useLocation()
+    const { currentUser } = state
+    const navigate = useNavigate()
+    console.log(currentUser)
+    // user ID state management
+
+    // const { user, login, logout} = useUser()
     const [filteredSandwiches, setFilteredSandwiches] = useState([])
     const [wordEntered, setWordEntered] = useState("")
 
@@ -39,8 +48,8 @@ function SearchBar({placeholder, sandwiches}) {
                 {filteredSandwiches.slice(0, 15).map((value, key) => {
                     return (
                     <a className="sandwichItem"> 
-                        <p>
-                            <Link className="link-to-sandwich-profile" to={`/sandwiches/${value.id}`}>{value.sandwich_name}</Link>
+                        <p onClick={(() => {
+                            navigate(`/sandwiches/${value.id}`, { state: { currentUser }})})}>{value.sandwich_name}
                         </p>
                     </a>)
                 })}

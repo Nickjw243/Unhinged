@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { useUser } from "./UserContext";
 
 function SandwichProfile() {
 
+    // user ID state management
+    const { state } = useLocation()
+    const { currentUser } = state
+    const navigate = useNavigate()
+    console.log(currentUser)
+    // user ID state management
+
+    // const { user } = useUser()
     const [sandwich, setSandwich] = useState({})
     const params = useParams()
     const sandwichId = params.id
@@ -17,20 +26,22 @@ function SandwichProfile() {
         return <h1>Loading...</h1>
     }
 
-    // const handleCheckIn = (e) => {
-    //     e.preventDefault()
-    //     fetch('/checkin', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify({
-    //             user_id:
-    //             sandwich_id:
-    //             checkin_date:
-    //         })
-    //     })
-    // }
+    const handleCheckIn = () => {
+        fetch('/checkin', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                user_id: currentUser.id,
+                sandwich_id: sandwichId,
+            })
+        })
+        .then(r => r.json())
+        .then(data => {
+            console.log(data)
+        })
+    }
 
     return (
         <div className="Sandwich-Profile">
@@ -46,7 +57,7 @@ function SandwichProfile() {
                 ></img>
             </div>
             <div>
-                <button>
+                <button onClick={handleCheckIn}>
                     Check In
                 </button>
             </div>

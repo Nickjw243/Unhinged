@@ -2,18 +2,21 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik"
 import * as yup from "yup"
+import { useUser } from "./UserContext";
 
 function Login() {
 
   const navigate = useNavigate()
+
+  // const { login } = useUser()
 
   const formSchema = yup.object().shape({
     email: yup.string().email("Invalid email").required("Please enter valid email"),
     password: yup.string().required("Password incorrect").max(25)
   })
 
-  const [form, setForm] = useState(formSchema)
-  const [loggedIn, setLoggedIn] = useState(formSchema.email)
+  // const [form, setForm] = useState(formSchema)
+  // const [loggedIn, setLoggedIn] = useState("")
 
   const formik = useFormik({
     initialValues: {
@@ -22,34 +25,57 @@ function Login() {
     },
     validationSchema: formSchema,
     onSubmit: (values) => {
-      fetch("/login", {
-        method: 'POST',
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values)
-      }).then((r) => {
-        if (r.ok) {
-          r.json().then(user => {
-                if (user.id) {
-                  console.log('you signed in')
-                  setForm(formSchema)
-                  setLoggedIn(user.id)
-                  navSwipe(user.id)
-                  } else {
-                    console.log('Login failed: ', user)
-                  }
-              })
-        } else {
-          r.json().then((err) => console.log('error'))
-        }
-      })
+      fetch("/users")
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          }
+          throw new Error("Something went wrong");
+        })
+        .then((data) => {
+          data.forEach((currentUser) => {
+            if (
+              currentUser.user_email === formik.values.email &&
+              currentUser.password === formik.values.password
+            ) {
+              navigate(`/sandwiches`, {
+                state: { currentUser },
+              });
+            }
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      // fetch("/login", {
+      //   method: 'GET',
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(values)
+      // }).then((r) => {
+      //   if (r.ok) {
+      //     r.json().then((user) => {
+      //           if (user.id) {
+      //             console.log('you signed in')
+      //             // login(user)
+      //             setForm(formSchema)
+      //             setLoggedIn(user.id)
+      //             navSwipe(user.id)
+      //             } else {
+      //               console.log('Login failed: ', user)
+      //             }
+      //         })
+      //   } else {
+      //     r.json().then((err) => console.log('error'))
+      //   }
+      // })
     }
   })
 
-  function navSwipe(id) {
-    navigate('/sandwiches', { state: { loggedIn: id}})
-  }
+  // function navSwipe(id) {
+  //   navigate('/sandwiches', { state: { loggedIn: id}})
+  // }
 
   return (
       <div className="Login">
@@ -81,9 +107,7 @@ function Login() {
                 <h3>{formik.errors.password}</h3>
             ) : ('')}
           </p>
-          <button class="btn btn-danger" className="login_button" type="submit">
-            <Link className="link-to-sandwich-main" to={'/sandwiches'}>Log In</Link>
-          </button>
+          <button class="btn btn-danger" className="login_button" type="submit" onClick={formik.handleSubmit}>Log In</button>
         </form>
         <button class="btn btn-outline-danger">
           <Link className="link-to-signup" to={`/signup`}>Sign Up Here</Link>
