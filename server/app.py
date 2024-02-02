@@ -124,20 +124,17 @@ def checkins():
         )
     return response
 
-@app.route('/checkin/<int:id>', methods = ['GET'])
-def checkins_by_id(id):
-    checkins = CheckIn.query.filter(CheckIn.id == id).first()
+@app.route('/checkin/<int:currentUser>', methods = ['GET'])
+def checkins_by_id(currentUser):
+    checkins = CheckIn.query.filter(CheckIn.id == currentUser).all()
 
-    if checkins:
-        response = make_response(
-            checkins.to_dict(),
-            200
-        )
-    else:
-        response = make_response(
-            {'error': 'Checkin not found'},
-            404
-        )
+    checkins_dict = [checkin.to_dict() for checkin in checkins]
+
+    response = make_response(
+        checkins_dict,
+        200
+    )
+    
     return response
 
 @app.route('/login', methods = ['POST'])

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { Link, useParams, useLocation, useNavigate } from "react-router-dom";
 
 function UserProfile() {
 
@@ -7,25 +7,20 @@ function UserProfile() {
     const { state } = useLocation()
     const { currentUser } = state
     const navigate = useNavigate()
-    // console.log(currentUser)
+    console.log(currentUser)
     // user ID state management
 
-    const [checkin, setCheckin] = useState({})
-    // const params = useParams()
-    // const checkinId = params.id
+    const [checkins, setCheckins] = useState([])
+    const params = useParams()
+    const checkinId = params.id
 
     useEffect(() => {
-        fetch(`/checkin/${currentUser.id}`)
+        fetch('/checkin/' + currentUser.id)
         .then(r => r.json())
-        .then(data => {
-            console.log(data)
-            setCheckin(data)
+        .then((data) => {
+            setCheckins(data)
         })
     }, [])
-
-    if (!checkin.id) {
-        return <h1>Loading...</h1>
-    }
 
     function handleSearchSandwichNav() {
         navigate('/sandwiches', { state: { currentUser }})
@@ -36,9 +31,21 @@ function UserProfile() {
             <header>Welcome, {currentUser.username}
             <br />
                 <button onClick={handleSearchSandwichNav}>Search for Sandwiches</button>
+                <button><Link className ="link-to-log-out" to={'/'} >Log Out</Link></button>
             </header>
+            <br />
             <div>
-
+                {checkins.map((checkin) => {
+                    return (
+                        <a>
+                            <img
+                                src={checkin.sandwich.image}
+                                alt={checkin.sandwich.sandwich_name}
+                            ></img>
+                            <p>{checkin.sandwich.sandwich_name}</p>
+                        </a>
+                        );
+                })}
             </div>
         </div>
     )

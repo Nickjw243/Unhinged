@@ -24,8 +24,18 @@ function RestaurantList() {
         return <h1>Loading...</h1>
     }
 
+    function handleProfileNav() {
+        navigate(`/user_profile/${currentUser.id}`, { state: { currentUser }})
+    }
+
     return (
         <div className="Restaurant-Profile">
+            <header>Welcome, {currentUser.username}!
+            <br />
+                <button onClick={handleProfileNav}>Profile</button>
+                <button><Link className ="link-to-log-out" to={'/'} >Log Out</Link></button>
+            </header>
+            <br />
             <h1>{restaurant.restaurant_name}</h1>
             <div className="restaurant-sandwich-div">
                 {restaurant.sandwich.map((value, key) => {

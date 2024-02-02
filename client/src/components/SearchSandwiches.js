@@ -36,6 +36,7 @@ function SearchSandwiches() {
             <header>Welcome, {currentUser.username}!
             <br />
                 <button onClick={handleProfileNav}>Profile</button>
+                <button><Link className ="link-to-log-out" to={'/'} >Log Out</Link></button>
             </header>
             <br />
             <div>

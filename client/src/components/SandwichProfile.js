@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useLocation, useNavigate } from "react-router-dom";
-import { useUser } from "./UserContext";
+import { Link, useParams, useLocation, useNavigate } from "react-router-dom";
+
 
 function SandwichProfile() {
 
@@ -11,7 +11,6 @@ function SandwichProfile() {
     console.log(currentUser)
     // user ID state management
 
-    // const { user } = useUser()
     const [sandwich, setSandwich] = useState({})
     const params = useParams()
     const sandwichId = params.id
@@ -42,9 +41,20 @@ function SandwichProfile() {
             console.log(data)
         })
     }
+    
+
+    function handleProfileNav() {
+        navigate(`/user_profile/${currentUser.id}`, { state: { currentUser }})
+    }
 
     return (
         <div className="Sandwich-Profile">
+            <header>Welcome, {currentUser.username}!
+            <br />
+                <button onClick={handleProfileNav}>Profile</button>
+                <button><Link className ="link-to-log-out" to={'/'} >Log Out</Link></button>
+            </header>
+            <br />
             <h1>Sandwich Profile</h1>
             <div className="sandwich-title">
                 <h2>{sandwich.sandwich_name}</h2>

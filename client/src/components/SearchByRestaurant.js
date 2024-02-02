@@ -43,9 +43,18 @@ function SearchByRestaurant() {
         setWordEntered("")
     }
 
+    function handleProfileNav() {
+        navigate(`/user_profile/${currentUser.id}`, { state: { currentUser }})
+    }
+
     return (
         <div className="restaurant-search">
-            <h1>Restaurant Search</h1>
+            <header>Welcome, {currentUser.username}!
+            <br />
+                <button onClick={handleProfileNav}>Profile</button>
+                <button><Link className ="link-to-log-out" to={'/'} >Log Out</Link></button>
+            </header>
+            <br />
             <div className="searchInputs">
                 <input type="text" placeholder="Search by Restaurants" value={wordEntered} onChange={handleFilter} />
                 <div className="searchIcon">
