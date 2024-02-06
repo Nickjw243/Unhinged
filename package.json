@@ -5,6 +5,7 @@
     "@mui/icons-material": "^5.15.6",
     "@mui/material": "^5.15.6",
     "formik": "^2.4.5",
+    "react-icons": "^5.0.1",
     "yup": "^1.3.3"
   }
 }

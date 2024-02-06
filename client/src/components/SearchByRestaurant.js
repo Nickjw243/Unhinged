@@ -9,7 +9,7 @@ function SearchByRestaurant() {
     const { state } = useLocation()
     const { currentUser } = state
     const navigate = useNavigate()
-    console.log(currentUser)
+    // console.log(currentUser)
     // user ID state management
 
     const [restaurants, setRestaurants] = useState([])
@@ -47,14 +47,23 @@ function SearchByRestaurant() {
         navigate(`/user_profile/${currentUser.id}`, { state: { currentUser }})
     }
 
+    function handleSearchSandwichNav() {
+        navigate('/sandwiches', { state: { currentUser }})
+    }
+
     return (
         <div className="restaurant-search">
-            <header>Welcome, {currentUser.username}!
-            <br />
-                <button onClick={handleProfileNav}>Profile</button>
-                <button><Link className ="link-to-log-out" to={'/'} >Log Out</Link></button>
+            <header className="header-container">
+                <span>Welcome, {currentUser.username}!</span>
+                <div className="header-buttons">
+                    <button onClick={handleProfileNav}>Profile</button>
+                    <button><Link className ="link-to-log-out" to={'/'} >Log Out</Link></button>
+                </div>
             </header>
             <br />
+            <div>
+                <button onClick={handleSearchSandwichNav}>Search by Sandwiches</button>
+            </div>
             <div className="searchInputs">
                 <input type="text" placeholder="Search by Restaurants" value={wordEntered} onChange={handleFilter} />
                 <div className="searchIcon">

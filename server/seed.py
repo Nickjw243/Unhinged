@@ -51,6 +51,7 @@ if __name__ == '__main__':
         print('Seeding Sandwiches model...')
 
         sandwiches = [
+            # Gramophone
             Sandwiches(
                 sandwich_name = 'Italian Yardbird',
                 restaurant_id = 1,
@@ -66,6 +67,8 @@ if __name__ == '__main__':
                 restaurant_id = 1,
                 image = 'https://129534174.cdn6.editmysite.com/uploads/1/2/9/5/129534174/s133514416528582280_p1046_i3_w720.jpeg?dpr=2'
             ),
+
+            #Gioia's
             Sandwiches(
                 sandwich_name = 'Italian Trio',
                 restaurant_id = 2,
@@ -81,6 +84,68 @@ if __name__ == '__main__':
                 restaurant_id = 2,
                 image = 'https://images.squarespace-cdn.com/content/v1/5a7c74ccedaed821286dde9c/1614774765261-FMFI67QVB3TGYVA57YZL/IMG_4855.jpg?format=2500w'
             ),
+            Sandwiches(
+                sandwich_name = 'Hot Salami and Roast Beef',
+                restaurant_id = 2,
+                image = 'https://images.squarespace-cdn.com/content/v1/5a7c74ccedaed821286dde9c/1614774812379-VNTDZRERH43GJJC3PCGY/Gioia%27s+Deli+-+20201013+-+153.jpg?format=2500w'
+            ),
+            Sandwiches(
+                sandwich_name = 'Porknado',
+                restaurant_id = 2,
+                image = 'https://images.squarespace-cdn.com/content/v1/5a7c74ccedaed821286dde9c/1614775493354-VX356RX4NR3IX23MMZJE/Gioia%27s+Deli+-+20201013+-+158.jpg?format=1500w'
+            ),
+            Sandwiches(
+                sandwich_name = 'Hogfather',
+                restaurant_id = 2,
+                image = 'https://images.squarespace-cdn.com/content/v1/5a7c74ccedaed821286dde9c/1614775531063-B42NUBTFTH30CW4053GF/Gioia%27s+Deli+-+20201013+-+177.jpg?format=1500w'
+            ),
+            Sandwiches(
+                sandwich_name = 'Big Italian',
+                restaurant_id = 2,
+                image = 'https://images.squarespace-cdn.com/content/v1/5a7c74ccedaed821286dde9c/1623013268215-ZD9VBB4X70WVD1MNTZ89/Gioia%27s+Deli+-+20210603+-+108.jpg?format=1500w'
+            ),
+            Sandwiches(
+                sandwich_name = 'Hot Roast Beef',
+                restaurant_id = 2,
+                image = 'https://images.squarespace-cdn.com/content/v1/5a7c74ccedaed821286dde9c/1614776338691-6QPSRO5J6U68NMAVCSIV/IMG_4856.jpg?format=2500w'
+            ),
+            Sandwiches(
+                sandwich_name = 'Meatball',
+                restaurant_id = 2,
+                image = 'https://images.squarespace-cdn.com/content/v1/5a7c74ccedaed821286dde9c/1614776367633-AA3JHQA5008JV8L0ANKN/IMG_4876.jpg?format=2500w'
+            ),
+            Sandwiches(
+                sandwich_name = 'Italian Delight',
+                restaurant_id = 2,
+                image = 'https://images.squarespace-cdn.com/content/v1/5a7c74ccedaed821286dde9c/1614776409180-4WAVYR5TM69MAOYVPF2X/Gioia%27s+Deli+-+20201013+-+180.jpg?format=1500w'
+            ),
+            Sandwiches(
+                sandwich_name = 'Club',
+                restaurant_id = 2,
+                image = 'https://images.squarespace-cdn.com/content/v1/5a7c74ccedaed821286dde9c/1614776444722-KX5DLW9AH5M3PTFI9194/Gioia%27s+Deli+-+20201013+-+206.jpg?format=1500w'
+            ),
+            Sandwiches(
+                sandwich_name = 'Italian Poor Boy',
+                restaurant_id = 2,
+                image = 'https://images.squarespace-cdn.com/content/v1/5a7c74ccedaed821286dde9c/1614776490161-JYZBSY6FYUIQF56NGGUK/Gioia%27s+Deli+-+20201013+-+184.jpg?format=1500w'
+            ),
+            Sandwiches(
+                sandwich_name = 'Turkey',
+                restaurant_id = 2,
+                image = 'https://images.squarespace-cdn.com/content/v1/5a7c74ccedaed821286dde9c/1614776530414-U37E76ZO3W8TZHPR3N92/Gioia%27s+Deli+-+20201013+-+191.jpg?format=1500w'
+            ),
+            Sandwiches(
+                sandwich_name = 'Rich Boy',
+                restaurant_id = 2,
+                image = 'https://images.squarespace-cdn.com/content/v1/5a7c74ccedaed821286dde9c/1614776567842-J7AF4WJU12D9WEMR3MVI/Gioia%27s+Deli+-+20201013+-+197.jpg?format=1500w'
+            ),
+            Sandwiches(
+                sandwich_name = 'Veggie',
+                restaurant_id = 2,
+                image = 'https://images.squarespace-cdn.com/content/v1/5a7c74ccedaed821286dde9c/1614776592193-0J5I217DCPLBYX51CUC8/Gioia%27s+Deli+-+20201013+-+195.jpg?format=1500w'
+            ),
+
+            #Amighetti's 
             Sandwiches(
                 sandwich_name = "Amighetti's Special",
                 restaurant_id = 3,

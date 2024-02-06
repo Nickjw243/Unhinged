@@ -124,9 +124,9 @@ def checkins():
         )
     return response
 
-@app.route('/checkin/<int:currentUser>', methods = ['GET'])
-def checkins_by_id(currentUser):
-    checkins = CheckIn.query.filter(CheckIn.id == currentUser).all()
+@app.route('/checkin/<int:user>', methods = ['GET'])
+def checkins_by_id(user):
+    checkins = CheckIn.query.filter(CheckIn.user_id == user).all()
 
     checkins_dict = [checkin.to_dict() for checkin in checkins]
 

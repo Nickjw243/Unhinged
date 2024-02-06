@@ -41,8 +41,8 @@ function SignUp() {
     });
 
     return (
-        <div>
-        <form onSubmit={formik.handleSubmit} style={{ margin: "30px" }}>
+        <div className="SignUpFormDiv">
+        <form className="SignUpForm" onSubmit={formik.handleSubmit} style={{ margin: "30px" }}>
             <label>Email Address</label>
             <br />
             <input

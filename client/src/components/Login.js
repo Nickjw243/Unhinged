@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik"
 import * as yup from "yup"
-import { useUser } from "./UserContext";
+import { GiSandwich } from "react-icons/gi";
 
 function Login() {
 
@@ -78,40 +78,44 @@ function Login() {
   // }
 
   return (
-      <div className="Login">
-        <h1 classname = "login-title">Unhinged</h1>
-        <form onSubmit = {formik.handleSubmit}>
-          <input 
-            type = "text"
-            name = "email"
-            onChange={formik.handleChange}
-            value = {formik.values.email}
-            placeholder = "Email"
-            onBlur = {formik.handleBlur}>
-          </input>
-          <p>
-            {formik.touched.email && formik.errors.email ? (
-              <h3>{formik.errors.email}</h3>
-            ) : ('')}
-          </p>
-          <input 
-            type="password"
-            name="password"
-            value={formik.values.password}
-            onChange={formik.handleChange}
-            placeholder="Password"
-            onBlur={formik.handleBlur}>
-          </input>
-          <p>
-            {formik.touched.password && formik.errors.password ? (
-                <h3>{formik.errors.password}</h3>
-            ) : ('')}
-          </p>
-          <button class="btn btn-danger" className="login_button" type="submit" onClick={formik.handleSubmit}>Log In</button>
-        </form>
-        <button class="btn btn-outline-danger">
-          <Link className="link-to-signup" to={`/signup`}>Sign Up Here</Link>
-        </button>
+    <div>
+        <h1 className = "login-title">Unhinged</h1>
+        <div className="Login">
+          <form onSubmit = {formik.handleSubmit}>
+            <input 
+              type = "email"
+              name = "email"
+              onChange={formik.handleChange}
+              value = {formik.values.email}
+              placeholder = "Email"
+              onBlur = {formik.handleBlur}>
+            </input>
+            <GiSandwich />
+            <p>
+              {formik.touched.email && formik.errors.email ? (
+                <h3>{formik.errors.email}</h3>
+              ) : ('')}
+            </p>
+            <input 
+              type="password"
+              name="password"
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              placeholder="Password"
+              onBlur={formik.handleBlur}>
+            </input>
+            <GiSandwich />
+            <p>
+              {formik.touched.password && formik.errors.password ? (
+                  <h3>{formik.errors.password}</h3>
+              ) : ('')}
+            </p>
+            <button className="login_button" type="submit" onClick={formik.handleSubmit}>Log In</button>
+            <button className="signup-link">
+              <Link className="link-to-signup" to={`/signup`}>Sign Up Here</Link>
+            </button>
+          </form>
+        </div>
       </div>
   )
 }

@@ -30,11 +30,15 @@ function RestaurantList() {
 
     return (
         <div className="Restaurant-Profile">
-            <header>Welcome, {currentUser.username}!
-            <br />
-                <button onClick={handleProfileNav}>Profile</button>
-                <button><Link className ="link-to-log-out" to={'/'} >Log Out</Link></button>
-            </header>
+            <div className="header">
+                <header className="header-container">
+                    <span>Welcome, {currentUser.username}!</span>
+                    <div className="header-buttons">
+                        <button onClick={handleProfileNav}>Profile</button>
+                        <button><Link className ="link-to-log-out" to={'/'} >Log Out</Link></button>
+                    </div>
+                </header>
+            </div>
             <br />
             <h1>{restaurant.restaurant_name}</h1>
             <div className="restaurant-sandwich-div">

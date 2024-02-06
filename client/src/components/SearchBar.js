@@ -10,7 +10,7 @@ function SearchBar({placeholder, sandwiches}) {
     const { state } = useLocation()
     const { currentUser } = state
     const navigate = useNavigate()
-    console.log(currentUser)
+    // console.log(currentUser)
     // user ID state management
 
     // const { user, login, logout} = useUser()
