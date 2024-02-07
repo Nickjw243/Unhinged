@@ -36,18 +36,18 @@ function SearchSandwiches() {
             <div className="main">
                 <header className="header-container">
                     <span>Welcome, {currentUser.username}!</span>
-                    <div className="header-buttons">
-                        <button onClick={handleProfileNav}>Profile</button>
-                        <button><Link className ="link-to-log-out" to={'/'} >Log Out</Link></button>
+                    <div className="header-buttons" class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button onClick={handleProfileNav} class="btn btn-primary me-md-2" type="button">Profile</button>
+                        <button class="btn btn-primary" type="button"><Link className ="link-to-log-out" to={'/'} >Log Out</Link></button>
                     </div>
                 </header>
                 <br />
                 <div>
                     <button onClick={(() => {
-                        navigate('/restaurants', { state: { currentUser }})})}>Search by Restaurant
+                        navigate('/restaurants', { state: { currentUser }})})} className="searchRestaurantBtn">Search by Restaurant
                     </button>
                 </div>
-                <div>
+                <div class="container">
                     <SearchBar placeholder="Search for Sandwich..." sandwiches={sandwiches} handleSandwichProfileNav = {handleSandwichProfileNav}/>
                 </div>
             </div>

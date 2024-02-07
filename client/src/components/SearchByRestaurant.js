@@ -53,35 +53,37 @@ function SearchByRestaurant() {
 
     return (
         <div className="restaurant-search">
-            <header className="header-container">
-                <span>Welcome, {currentUser.username}!</span>
-                <div className="header-buttons">
-                    <button onClick={handleProfileNav}>Profile</button>
-                    <button><Link className ="link-to-log-out" to={'/'} >Log Out</Link></button>
+            <div className="main">
+                <header className="header-container">
+                    <span>Welcome, {currentUser.username}!</span>
+                    <div className="header-buttons" class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button onClick={handleProfileNav} class="btn btn-primary me-md-2" type="button">Profile</button>
+                        <button class="btn btn-primary" type="button"><Link className ="link-to-log-out" to={'/'} >Log Out</Link></button>
+                    </div>
+                </header>
+                <br />
+                <div>
+                    <button onClick={handleSearchSandwichNav} className="searchSandwichesBtn">Search by Sandwiches</button>
                 </div>
-            </header>
-            <br />
-            <div>
-                <button onClick={handleSearchSandwichNav}>Search by Sandwiches</button>
-            </div>
-            <div className="searchInputs">
-                <input type="text" placeholder="Search by Restaurants" value={wordEntered} onChange={handleFilter} />
-                <div className="searchIcon">
-                    {filteredRestaurants.length === 0 ? <SearchIcon /> : <CloseIcon id="clearBtn" onClick={clearInput}/>}
+                <div className="searchInputs">
+                    <input type="text" placeholder="Search by Restaurants" value={wordEntered} onChange={handleFilter} />
+                    <div className="searchIcon">
+                        {filteredRestaurants.length === 0 ? <SearchIcon /> : <CloseIcon id="clearBtn" onClick={clearInput}/>}
+                    </div>
                 </div>
+                {filteredRestaurants.length != 0 && (
+                <div className="dataResult">
+                    {filteredRestaurants.slice(0, 15).map((value, key) => {
+                        return (
+                        <a className="restaurantItem"> 
+                            <p onClick={(() => {
+                                navigate(`/restaurants/${value.id}`, { state: { currentUser }})})}>{value.restaurant_name}
+                            </p>
+                        </a>)
+                    })}
+                </div>
+                )}
             </div>
-            {filteredRestaurants.length != 0 && (
-            <div className="dataResult">
-                {filteredRestaurants.slice(0, 15).map((value, key) => {
-                    return (
-                    <a className="restaurantItem"> 
-                        <p onClick={(() => {
-                            navigate(`/restaurants/${value.id}`, { state: { currentUser }})})}>{value.restaurant_name}
-                        </p>
-                    </a>)
-                })}
-            </div>
-            )}
         </div>
     )
 }

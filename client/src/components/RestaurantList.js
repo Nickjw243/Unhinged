@@ -28,37 +28,46 @@ function RestaurantList() {
         navigate(`/user_profile/${currentUser.id}`, { state: { currentUser }})
     }
 
+    function handleSearchSandwichNav() {
+        navigate('/sandwiches', { state: { currentUser }})
+    }
+
     return (
         <div className="Restaurant-Profile">
             <div className="header">
                 <header className="header-container">
                     <span>Welcome, {currentUser.username}!</span>
-                    <div className="header-buttons">
-                        <button onClick={handleProfileNav}>Profile</button>
-                        <button><Link className ="link-to-log-out" to={'/'} >Log Out</Link></button>
+                    <div className="header-buttons" class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button onClick={handleProfileNav} class="btn btn-primary me-md-2" type="button">Profile</button>
+                        <button class="btn btn-primary" type="button"><Link className ="link-to-log-out" to={'/'} >Log Out</Link></button>
                     </div>
                 </header>
             </div>
             <br />
+            <div>
+                <button onClick={handleSearchSandwichNav} className="searchSandwichesBtn">Search by Sandwiches</button>
+            </div>
             <h1>{restaurant.restaurant_name}</h1>
             <div className="restaurant-sandwich-div">
-                {restaurant.sandwich.map((value, key) => {
-                    return(
-                        <a onClick={(() => {
-                                navigate(`/sandwiches/${value.id}`, { state: { currentUser }})})}>
-                            <div>
-                                <img
-                                className="restaurant-sandwich-image"
-                                src={value.image}
-                                alt = {value.sandwich_name}
-                                ></img>
-                            </div>
-                            <div>
-                                {value.sandwich_name}
-                            </div>
-                        </a>
-                    )
-                })}
+                <div className="sandwich-container">
+                    {restaurant.sandwich.map((value, key) => {
+                        return(
+                            <a onClick={(() => {
+                                    navigate(`/sandwiches/${value.id}`, { state: { currentUser }})})}>
+                                <div>
+                                    <img
+                                        className="restaurant-sandwich-image"
+                                        src={value.image}
+                                        alt = {value.sandwich_name}
+                                    ></img>
+                                </div>
+                                <div>
+                                    {value.sandwich_name}
+                                </div>
+                            </a>
+                        )
+                    })}
+                </div>
             </div>
         </div>
     )

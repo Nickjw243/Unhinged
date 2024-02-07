@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link, useLocation, useNavigate} from "react-router-dom"
-import { useUser } from "./UserContext";
+
 
 function SearchBar({placeholder, sandwiches}) {
 
@@ -13,7 +13,7 @@ function SearchBar({placeholder, sandwiches}) {
     // console.log(currentUser)
     // user ID state management
 
-    // const { user, login, logout} = useUser()
+ 
     const [filteredSandwiches, setFilteredSandwiches] = useState([])
     const [wordEntered, setWordEntered] = useState("")
 
@@ -35,26 +35,52 @@ function SearchBar({placeholder, sandwiches}) {
         setWordEntered("")
     }
 
+    // return (
+    //     <div className="sandwich-search-container">
+    //         <div
+    //         <div className="searchInputs">
+    //             <input type="text" placeholder={placeholder} value={wordEntered} onChange={handleFilter} />
+    //             <div className="searchIcon">
+    //                 {filteredSandwiches.length === 0 ? <SearchIcon /> : <CloseIcon id="clearBtn" onClick={clearInput}/>}
+    //             </div>
+    //         </div>
+    //         {filteredSandwiches.length != 0 && (
+    //         <div className="dataResult">
+    //             {filteredSandwiches.slice(0, 15).map((value, key) => {
+    //                 return (
+    //                 <a className="sandwichItem"> 
+    //                     <p onClick={(() => {
+    //                         navigate(`/sandwiches/${value.id}`, { state: { currentUser }})})}>{value.sandwich_name}
+    //                     </p>
+    //                 </a>)
+    //             })}
+    //         </div>
+    //         )}
+    //     </div>
+    // )
+
     return (
-        <div className="sandwich-search">
-            <div className="searchInputs">
-                <input type="text" placeholder={placeholder} value={wordEntered} onChange={handleFilter} />
-                <div className="searchIcon">
-                    {filteredSandwiches.length === 0 ? <SearchIcon /> : <CloseIcon id="clearBtn" onClick={clearInput}/>}
+        <div className="sandwich-search-container">
+            <div className="sandwich-search">
+                <div className="searchInputs">
+                    <input type="text" placeholder={placeholder} value={wordEntered} onChange={handleFilter} />
+                    <div className="searchIcon">
+                        {filteredSandwiches.length === 0 ? <SearchIcon /> : <CloseIcon id="clearBtn" onClick={clearInput}/>}
+                    </div>
                 </div>
+                {filteredSandwiches.length !== 0 && (
+                <div className="dataResult">
+                    {filteredSandwiches.slice(0, 15).map((value, key) => {
+                        return (
+                        <a className="sandwichItem"> 
+                            <p onClick={() => {
+                                navigate(`/sandwiches/${value.id}`, { state: { currentUser }})
+                            }}>{value.sandwich_name}</p>
+                        </a>)
+                    })}
+                </div>
+                )}
             </div>
-            {filteredSandwiches.length != 0 && (
-            <div className="dataResult">
-                {filteredSandwiches.slice(0, 15).map((value, key) => {
-                    return (
-                    <a className="sandwichItem"> 
-                        <p onClick={(() => {
-                            navigate(`/sandwiches/${value.id}`, { state: { currentUser }})})}>{value.sandwich_name}
-                        </p>
-                    </a>)
-                })}
-            </div>
-            )}
         </div>
     )
 

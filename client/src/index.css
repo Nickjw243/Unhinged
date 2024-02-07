@@ -1,12 +1,13 @@
-:root {
+/* :root {
   --base-color: #06b;
   --hover-color: rgba(220, 120, 150, 1);
-}
+} */
 
 body {
   display: flex;
   justify-content: center;
-  height: 50vh
+  height: 50vh;
+  background: linear-gradient(#ffe6aa, #fff4f4, #96c93b, #ff9797, #ffe6aa);
 }
 
 /* Sign Up Form */
@@ -24,31 +25,33 @@ body {
 /* Sign Up Form */
 
 /* Search Bar and restaurant search CSS */
+.sandwich-search-container {
+  display: flex;
+  justify-content: center
+}
+
 .searchInputs {
   margin-top: 105px;
   display: flex;
   place-content: center;
   width: 1200px;
+  /* border: 2px solid; */
 }
 
-.search input{
+.searchInputs input{
   background-color: white;
-  border: 0;
+  border: 2px solid;
   border-radius: 2px;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
-  font-size: 20px;
+  font-size: 18px;
   padding: 15px;
-  height: 30px;
-  width: 100px;
+  height: 60px;
+  width: 250px;
 }
 
 input[type=text] {
   transition: width 0.4s ease-in-out;
-}
-
-input[type=text]:focus {
-  width: 25%;
 }
 
 .searchIcon {
@@ -57,6 +60,8 @@ input[type=text]:focus {
   background-color: white;
   display: grid;
   place-items: center;
+  border: 2px solid;
+  margin-left: 3px;
 }
 
 input:focus {
@@ -69,13 +74,16 @@ input:focus {
 
 .dataResult {
   margin-top: 5px;
-  width: 1000px;
+  margin-left: 448px;
+  width: 29%;
   height: 200px;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px, 15px;
   overflow: hidden;
   overflow-y: auto;
   place-content: center;
+  border: 2px solid;
+  position: absolute;
 }
 
 .dataResult::-webkit-scrollbar {
@@ -86,31 +94,26 @@ input:focus {
   width: 100%;
   height: 50px;
   display: flex;
+  justify-content: center;
   align-items: center;
   color: black;
   place-content: center;
-  margin-right: 100px;
-  margin-left: 50px;
+  /* margin-right: 100px;
+  margin-left: 100px; */
 }
 
 .dataResult .restaurantItem {
   width: 100%;
   height: 50px;
   display: flex;
+  justify-content: center;
   align-items: center;
   color: black;
+  place-content: center;
+  /* margin-right: 100px;
+  margin-left: 50px; */
 }
 
-.sandwichItem p {
-  margin-left: 10px;
-}
-a {
-  text-decoration: none;
-}
-
-.restaurantItem p {
-  margin-left: 10px;
-}
 a {
   text-decoration: none;
 }
@@ -142,39 +145,65 @@ a:hover {
 }
 
 .restaurant-sandwich-div {
-  margin:auto;
-  display:inline-block;
-  padding: 2rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sandwich-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 33%;
+  margin: 5px
+}
+
+.sandwich-container > a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   text-align: center;
-  /* justify-content: flex-start;
-  align-items: center; */
+  text-decoration: none;
+  color: inherit;
+  margin-top: 7px;
+  border: 1px solid;
 }
 
 .sandwich-search {
   width: 100%;
-  /* display: flex;
-  justify-content: center; */
 }
 
-/* Search Bar and restaurant search CSS */
+.Restaurant-Profile {
+  width: 100%;
+}
+
+/* ~~~~~~~~~~Search Bar and restaurant search CSS~~~~~~~~~~~~~~~~ */
+
+/* ~~~~~~~~~~RESTAURANT SEARCH~~~~~~~~~~~~ */
+.restaurant-search {
+  display: flex;
+  justify-content: center;
+}
+
+/* ~~~~~~~~~~RESTAURANT SEARCH~~~~~~~~~~~~ */
 
 /* User Profile CSS */
-.User-Profile {
+/* .User-Profile {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-}
+} */
 
 .header-container {
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  /* background-color: yellow; */
+  align-items: center;
 }
 
-.header-buttons {
-  display: flex;
-  gap: 10px;
+.header-container span {
+  margin-right: auto;
+}
+
+.header-buttons button {
+  margin-left: 5px;
 }
 
 .sandwich-list {
@@ -193,26 +222,18 @@ a:hover {
 }
 /* User Profile CSS */
 
-/* searchSandwich CSS */
-
-
-/* searchSandwich CSS */
-
-/* Login Page */
-/* .Login {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-} */
+.link-to-log-out {
+  color: white;
+}
 
 .login-title {
-  color: #ebbe0c;
+  color: #d2a800;
   font-family: sans-serif;
-  font-size: 36px;
+  font-size: 50px;
   font-weight: 600;
-  margin-top: 30px;
+  margin-top: 100px;
+  margin-left: 50px;
+  align-content: center;
   /* font-family: Copperplate, "Copperplate Gothic Light", fantasy;
   position: absolute;
   top: 0;
@@ -243,13 +264,19 @@ a:hover {
   border: 0;
   box-sizing: border-box;
   color: #eee;
-  font-size: 18px;
+  /* font-size: 18px; */
   outline: 0;
   padding: 4px 20px 0;
 }
 
 .Login input[type="email"] {
   margin-top: 40px;
+  color: white;
+}
+
+.Login p {
+  color: red;
+  font-size: 10px;
 }
 
 /* .Login input[type="password"] {
@@ -258,55 +285,13 @@ a:hover {
 
 .login_button {
   background-color: #06b;
-  width: 50%;
+  width: 45%;
   height: 15%;
   border-radius: 12px;
   box-sizing: border-box;
-  border: 10px solid var(--base-color);
+  border: 10px;
   font-size: 1rem;
-  cursor: pointer;
-  
-  > .text {
-    position: relative;
-    color: transparent;
-    background-image: linear-gradient(
-      90deg,
-      var(--hover-color) 0%,
-      var(--hover-color) 50%,
-      var(--base-color) 50%,
-      var(--base-color) 100%
-    );
-    background-repeat: repeat;
-    background-size: 50%;
-    background-position: 10% 0;
-    -webkit-background-clip: text;
-    background-clip: text;
-    transition: background-position 300ms;
-  }
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 3;
-    left: 0.1;
-    width: 50%;
-    height: 20%;
-    background: var(--base-color);
-    transform-origin: 100% 0;
-    transform: scale3d(0, 1, 1);
-    transition: transform 300ms;
-  }
-  
-  &:hover {
-    .text {
-      background-position: 0 0;
-    }
-
-    &::before {
-      transform-origin: 0 0;
-      transform: scale3d(1, 1, 1);
-    }
-  }
+  margin-right: 5px;
 }
 
 .signup-link {
@@ -316,8 +301,49 @@ a:hover {
   border-radius: 12px;
   border: 0;
   box-sizing: border-box;
+  font-size: 1rem;
 }
 
+.Login svg {
+  color: white;
+}
+
+.Login {
+  margin-top: 100px;
+  margin-left: 17px;
+}
 
 /* Login Page */
+
+.SignUpForm {
+  background-color: #04082d;
+  border-radius: 30px;
+  border-style: 80px double;
+  box-sizing: border-box;
+  height: 300px;
+  padding: 20px;
+  width: 320px;
+}
+
+.SignUpForm label{
+  color: rgba(255, 255, 255, 0.672);
+}
+
+.searchRestaurantBtn {
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding: 20px;
+  width: 200px;
+  height: 75px;
+  background-color: transparent;
+}
+
+.searchSandwichesBtn {
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding: 10px;
+  width: 250px;
+  height: 60px;
+  background-color: transparent;
+}
 
