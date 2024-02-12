@@ -46,6 +46,35 @@ def users():
 
     return response
 
+@app.route('/users/<int:id>', methods = ['PATCH'])
+def users_by_id(id):
+    selected_user = Users.query.filter(Users.id == id).first()
+
+    if selected_user:
+        try:
+            form_data = request.get_json()
+
+            for attr in form_data:
+                setattr(selected_user, attr, form_data[attr])
+
+            db.session.commit()
+
+            response = make_response(
+                selected_user.to_dict(),
+                201
+            )
+        except ValueError:
+            response = make_response(
+                {'Error': 'Validation error!'},
+                400
+            )
+    else:
+        response = make_response(
+            {'Error': 'User not found'},
+            400
+        )
+    return response
+
 @app.route('/restaurants', methods = ['GET'])
 def restaurants():
     restaurants = Restaurants.query.all()

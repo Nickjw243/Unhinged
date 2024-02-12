@@ -11,6 +11,8 @@ import RestaurantList from "./components/RestaurantList";
 import SandwichProfile from "./components/SandwichProfile";
 import UserProfile from "./components/UserProfile";
 import App from "./components/App";
+import 'bootstrap/dist/css/bootstrap.min.css';
+// import "./components/Modal/Modal.css"
 
 
 const router = createBrowserRouter(routes)

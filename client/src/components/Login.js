@@ -90,7 +90,7 @@ function Login() {
               placeholder = "Email"
               onBlur = {formik.handleBlur}>
             </input>
-            <GiSandwich />
+            <GiSandwich style={{ fontSize: '40px' }}/>
             <p>
               {formik.touched.email && formik.errors.email ? (
                 <h3>{formik.errors.email}</h3>
@@ -104,7 +104,7 @@ function Login() {
               placeholder="Password"
               onBlur={formik.handleBlur}>
             </input>
-            <GiSandwich />
+            <GiSandwich style={{ fontSize: '40px' }}/>
             <p>
               {formik.touched.password && formik.errors.password ? (
                   <h3>{formik.errors.password}</h3>

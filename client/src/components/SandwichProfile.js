@@ -52,33 +52,35 @@ function SandwichProfile() {
     }
 
     return (
-        <div className="Sandwich-Profile">
-            <div className="header">
-                <header className="header-container">
-                    <span>Welcome, {currentUser.username}!</span>
-                    <div className="header-buttons" class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button onClick={handleProfileNav} class="btn btn-primary me-md-2" type="button">Profile</button>
-                        <button class="btn btn-primary" type="button"><Link className ="link-to-log-out" to={'/'} >Log Out</Link></button>
+        <div className="Sandwich-Profile main">
+            <div className="main">
+                <div className="header">
+                    <header className="header-container">
+                        <span>Welcome, {currentUser.username}!</span>
+                        <div className="header-buttons" class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button onClick={handleProfileNav} class="btn btn-primary me-md-2" type="button">Profile</button>
+                            <button class="btn btn-primary" type="button"><Link className ="link-to-log-out" to={'/'} >Log Out</Link></button>
+                        </div>
+                    </header>
+                    <br />
+                    <div>
+                        <button onClick={handleSearchSandwichNav} className="searchSandwichesBtn">Search by Sandwiches</button>
                     </div>
-                </header>
-                <br />
-                <div>
-                    <button onClick={handleSearchSandwichNav} className="searchSandwichesBtn">Search by Sandwiches</button>
-                </div>
-                <div className="sandwich-title">
-                    <h2>{sandwich.sandwich_name}</h2>
-                </div>
-                <div className="sandwich-img-div">
-                    <img
-                    className="sandwich-img"
-                    src = {sandwich.image}
-                    alt = {sandwich.sandwich_name}
-                    ></img>
-                </div>
-                <div>
-                    <button onClick={handleCheckIn}>
-                        Check In
-                    </button>
+                    <div className="sandwich-title">
+                        <h2>{sandwich.sandwich_name}</h2>
+                    </div>
+                    <div className="sandwich-img-div">
+                        <img
+                        className="sandwich-img"
+                        src = {sandwich.image}
+                        alt = {sandwich.sandwich_name}
+                        ></img>
+                    </div>
+                    <div>
+                        <button onClick={handleCheckIn}>
+                            Check In
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
