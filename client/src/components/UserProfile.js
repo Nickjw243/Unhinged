@@ -11,7 +11,7 @@ function UserProfile() {
     const user = useSelector((state) => state.currentUser)
     // const dispatch = useDispatch()
 
-    console.log(user)
+    // console.log(user)
     // user ID state management
     const { state } = useLocation()
     const { currentUser } = state
@@ -24,14 +24,12 @@ function UserProfile() {
     const uniqueSandwichNames = Array.from(new Set(checkins.map((checkin) => checkin.sandwich.sandwich_name)));
 
     useEffect(() => {
-        fetch('/checkin/' + user.id)
+        fetch('/checkin/' + currentUser.id)
         .then(r => r.json())
         .then((data) => {
             setCheckins(data)
         })
     }, [])
-
-    console.log(currentUser)
 
     const removeCheckinSandwich = (id) => {
         setCheckins(checkins.filter(el => {
@@ -67,8 +65,8 @@ function UserProfile() {
             <div className="main">
                 <header className="header-container">
                     <span>Welcome, {user.username}</span>
-                    <EditUsername />
                     <div className="header-buttons" class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <EditUsername />
                         <button onClick={handleSearchSandwichNav} class="btn btn-primary me-md-2" type="button">Search for Sandwiches</button>
                         <button class="btn btn-primary" type="button"><Link className ="link-to-log-out" to={'/'} >Log Out</Link></button>
                     </div>

@@ -143,19 +143,20 @@ a:hover {
 }
 
 .restaurant-sandwich-image {
-  height: 100px;
+  height: 200px;
 }
 
-.restaurant-sandwich-div {
+/* .restaurant-sandwich-div {
   display: flex;
   flex-wrap: wrap;
-}
+} */
 
 .sandwich-container {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   flex: 1 1 33%;
-  margin: 5px
+  margin: 5px; */
+  width: 100%
 }
 
 .sandwich-container > a {
@@ -164,7 +165,7 @@ a:hover {
   align-items: center;
   text-align: center;
   text-decoration: none;
-  color: inherit;
+  /* color: inherit; */
   margin-top: 7px;
   border: 1px solid;
 }
@@ -173,9 +174,9 @@ a:hover {
   width: 100%;
 }
 
-.Restaurant-Profile {
+/* .Restaurant-Profile {
   width: 100%;
-}
+} */
 
 .main {
   width: 100%;
@@ -202,11 +203,11 @@ a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
 }
 
 .header-container span {
   margin-right: auto;
+  margin-left: 7px;
 }
 
 .header-buttons button {
@@ -225,7 +226,7 @@ a:hover {
 }
 
 .userprofile-pictures {
-  width: 100%;
+  /* width: 100%; */
   max-width: 400px;
   /* height: 100px; */
 }
@@ -243,10 +244,6 @@ a:hover {
   margin-top: 100px;
   margin-left: 50px;
   align-content: center;
-  /* font-family: Copperplate, "Copperplate Gothic Light", fantasy;
-  position: absolute;
-  top: 0;
-  left: 0; */
 }
 
 .Login form {
@@ -258,11 +255,6 @@ a:hover {
   padding: 20px;
   width: 320px;
 }
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-} */
 
 .Login input {
   height: 50px;
