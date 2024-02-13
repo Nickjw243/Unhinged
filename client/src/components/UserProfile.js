@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams, useLocation, useNavigate } from "react-router-dom";
-import Modal from "./Modal/Modal";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux'
 import EditUsername from "./Modal/EditUsername";
+import { loginSuccess } from "./userActions";
+// import updateCurrentUser from "./Redux/userActions";
 
 function UserProfile() {
 
+    // const isAuthenticated = useSelector((state) => state.isAuthenticated)
+    const user = useSelector((state) => state.currentUser)
+    // const dispatch = useDispatch()
+
+    console.log(user)
     // user ID state management
     const { state } = useLocation()
     const { currentUser } = state
@@ -17,22 +24,49 @@ function UserProfile() {
     const uniqueSandwichNames = Array.from(new Set(checkins.map((checkin) => checkin.sandwich.sandwich_name)));
 
     useEffect(() => {
-        fetch('/checkin/' + currentUser.id)
+        fetch('/checkin/' + user.id)
         .then(r => r.json())
         .then((data) => {
             setCheckins(data)
         })
     }, [])
 
+    console.log(currentUser)
+
+    const removeCheckinSandwich = (id) => {
+        setCheckins(checkins.filter(el => {
+            if (el.sandwich_id === id) {
+                return false
+            } else if (el.sandwich_id !== id) {
+                return true
+            }
+        }))
+    }
+
+    const handleSandwichDelete = (sandwichID) => {
+        fetch(`/checkin/${currentUser.id}/${sandwichID}`, {
+            method:'DELETE'
+        })
+        .then(r => {
+            if (r.ok) {
+                removeCheckinSandwich(sandwichID)
+            }
+        })
+    }
+
     function handleSearchSandwichNav() {
         navigate('/sandwiches', { state: { currentUser }})
     }
+
+    // function updateUsername(newUsername) {
+    //     dispatch(loginSuccess(newUsername))
+    // }
 
     return (
         <div className="User-Profile">
             <div className="main">
                 <header className="header-container">
-                    <span>Welcome, {currentUser.username}</span>
+                    <span>Welcome, {user.username}</span>
                     <EditUsername />
                     <div className="header-buttons" class="d-grid gap-2 d-md-flex justify-content-md-end">
                         <button onClick={handleSearchSandwichNav} class="btn btn-primary me-md-2" type="button">Search for Sandwiches</button>
@@ -55,6 +89,7 @@ function UserProfile() {
                                         alt={uniqueSandwichName}
                                     ></img>
                                     <p>{uniqueSandwichName}</p>
+                                    <button onClick={() => handleSandwichDelete(firstCheckinWithSameSandwich.sandwich.id)}>Delete Sandwich</button>
                                 </div>
                             </ul>
                         );

@@ -3,20 +3,18 @@ import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik"
 import * as yup from "yup"
 import { GiSandwich } from "react-icons/gi";
+import { useDispatch } from "react-redux";
+import { loginSuccess } from "./userActions";
 
 function Login() {
 
+  const dispatch = useDispatch()
   const navigate = useNavigate()
-
-  // const { login } = useUser()
 
   const formSchema = yup.object().shape({
     email: yup.string().email("Invalid email").required("Please enter valid email"),
     password: yup.string().required("Password incorrect").max(25)
   })
-
-  // const [form, setForm] = useState(formSchema)
-  // const [loggedIn, setLoggedIn] = useState("")
 
   const formik = useFormik({
     initialValues: {
@@ -33,49 +31,20 @@ function Login() {
           throw new Error("Something went wrong");
         })
         .then((data) => {
-          data.forEach((currentUser) => {
-            if (
+          const user = data.find((currentUser) => 
               currentUser.user_email === formik.values.email &&
               currentUser.password === formik.values.password
-            ) {
-              navigate(`/sandwiches`, {
-                state: { currentUser },
-              });
+            ) 
+            if (user) {
+              dispatch(loginSuccess(user))
+              navigate(`/sandwiches`, {state: { currentUser: user }});
             }
-          });
         })
         .catch((error) => {
           console.log(error);
         });
-      // fetch("/login", {
-      //   method: 'GET',
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify(values)
-      // }).then((r) => {
-      //   if (r.ok) {
-      //     r.json().then((user) => {
-      //           if (user.id) {
-      //             console.log('you signed in')
-      //             // login(user)
-      //             setForm(formSchema)
-      //             setLoggedIn(user.id)
-      //             navSwipe(user.id)
-      //             } else {
-      //               console.log('Login failed: ', user)
-      //             }
-      //         })
-      //   } else {
-      //     r.json().then((err) => console.log('error'))
-      //   }
-      // })
-    }
-  })
-
-  // function navSwipe(id) {
-  //   navigate('/sandwiches', { state: { loggedIn: id}})
-  // }
+      }
+    })
 
   return (
     <div>

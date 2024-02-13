@@ -3,15 +3,52 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
+import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { loginSuccess, updateUsername } from '../userActions';
 
 
 function EditUsername() {
+
+    const dispatch = useDispatch()
     const [show, setShow] = useState(false);
+    const [newUsername, setNewUsername] = useState('')
+    const params = useParams()
+    const userId = params.id
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    // const formOutline = {
+    //     username: ""
+    // }
+
+    const handleChange = (e) => {
+        setNewUsername(e.target.value)
+    }
+
+    const handleSubmit = () => {
+        fetch(`/users/${userId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ 
+                username: newUsername })
+        })
+        .then(r => {
+            if (r.ok) {
+                console.log(newUsername)
+                const userObject = {'username': newUsername}
+                dispatch(loginSuccess(userObject))
+                handleClose()
+            }
+        })
+        // .then((data) => {
+        //     setNewUsername(data)
+        // })
+        .catch(error => {console.log(error)})
+    }
 
     return (
         <>
@@ -31,9 +68,11 @@ function EditUsername() {
             <Modal.Body>
             <InputGroup className="mb-3">
                 <Form.Control
-                placeholder="Username"
-                aria-label="Username"
-                aria-describedby="basic-addon1"
+                    placeholder="Username"
+                    aria-label="Username"
+                    aria-describedby="basic-addon1"
+                    value={newUsername}
+                    onChange={handleChange}
                 />
             </InputGroup>
             </Modal.Body>
@@ -41,7 +80,7 @@ function EditUsername() {
             <Button variant="secondary" onClick={handleClose}>
                 Close
             </Button>
-            <Button variant="primary">Save Changes</Button>
+            <Button variant="primary" onClick={handleSubmit}>Save Changes</Button>
             </Modal.Footer>
         </Modal>
         </>

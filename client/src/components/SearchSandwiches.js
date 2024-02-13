@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-// import { useUser } from "./UserContext";
+import { useSelector } from "react-redux";
 import SearchBar from "./SearchBar";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
@@ -13,6 +13,8 @@ function SearchSandwiches() {
     // console.log(currentUser)
     // user ID state management
 
+    // const isAuthenticated = useSelector((state) => state.isAuthenticated)
+    // const user = useSelector((state) => state.currentUser)
     const [sandwiches, setSandwiches] = useState([])
 
     useEffect(() => {

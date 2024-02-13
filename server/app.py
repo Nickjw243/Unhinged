@@ -166,6 +166,22 @@ def checkins_by_id(user):
     
     return response
 
+@app.route('/checkin/<int:user>/<int:sandwich_id>', methods = ['DELETE'])
+def checkin_delete(user, sandwich_id):
+    checkin_deletes = CheckIn.query.filter(db.and_(CheckIn.user_id == user, CheckIn.sandwich_id == sandwich_id)).all()
+
+    for checkin_delete in checkin_deletes:
+        db.session.delete(checkin_delete)
+
+    db.session.commit()
+
+    response = make_response(
+        {},
+        204
+    )
+
+    return response
+
 @app.route('/login', methods = ['POST'])
 def users_by_email():
     try:
