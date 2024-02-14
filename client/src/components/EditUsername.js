@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { loginSuccess, updateUsername } from '../userActions';
+import { loginSuccess, updateUsername } from './userActions';
 
 
 function EditUsername() {
