@@ -1,6 +1,6 @@
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGOUT = 'LOGOUT';
-// export const UPDATE_USERNAME = 'UPDATE_USERNAME'
+export const UPDATE_USERNAME = 'UPDATE_USERNAME'
 
 export const loginSuccess = (user) => {
     // Store user information in localStorage
@@ -19,12 +19,12 @@ export const logout = () => {
     }
 };
 
-// export const updateUsername = (user) => {
+export const updateUsername = (user) => {
 
-//     localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('user', JSON.stringify(user));
 
-//     return {
-//         type: 'UPDATE_USERNAME',
-//         payload: user
-//     }
-// }
+    return {
+        type: 'UPDATE_USERNAME',
+        payload: user
+    }
+}

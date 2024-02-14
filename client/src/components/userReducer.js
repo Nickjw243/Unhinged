@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS, LOGOUT } from "./userActions"
+import { LOGIN_SUCCESS, LOGOUT, UPDATE_USERNAME } from "./userActions"
 
 const initialState = {
     isAuthenticated: false,
@@ -13,14 +13,14 @@ const userReducer = (state=initialState, action) => {
                 isAuthenticated: true,
                 currentUser: action.payload
             }
-        // case UPDATE_USERNAME:
-        //     return {
-        //         ...state,
-        //         currentUser: {
-        //             ...state.currentUser,
-        //             username: action.payload
-        //         }
-        //     }
+        case UPDATE_USERNAME:
+            return {
+                ...state,
+                currentUser: {
+                    ...state.currentUser,
+                    username: action.payload
+                }
+            }
         case LOGOUT:
             return {
                 ...state,

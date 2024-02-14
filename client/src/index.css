@@ -126,21 +126,34 @@ a:hover {
   cursor: pointer;
 }
 
-.sandwich-img-div {
-  /* height: 550px; */
-  width: 100%;
+.sandwich-profile {
+  margin-top: 75px;
+  /* display: flex;
+  justify-content: center; */
 }
+
+.restaurant-menu {
+  margin-top: 75px;
+}
+
+/* .sandwich-img-div {
+  height: 550px;
+  width: 100%;
+} */
 
 .sandwich-img {
-  /* height:500px */
+  display: flex;
+  justify-content: center;
+  height:500px;
   width: 100%;
-  max-width: 300px;
+  margin-top: 50px;
+  /* max-width: 300px; */
 }
 
-.sandwich-title {
+/* .sandwich-title {
   display: flex;
   position: relative;
-}
+} */
 
 .restaurant-sandwich-image {
   height: 200px;
@@ -167,7 +180,6 @@ a:hover {
   text-decoration: none;
   /* color: inherit; */
   margin-top: 7px;
-  border: 1px solid;
 }
 
 .sandwich-search {
@@ -251,9 +263,9 @@ a:hover {
   border-radius: 30px;
   border-style: 80px double;
   box-sizing: border-box;
-  height: 300px;
+  height: 400px;
   padding: 20px;
-  width: 320px;
+  width: 400px;
 }
 
 .Login input {
@@ -277,7 +289,7 @@ a:hover {
 
 .Login p {
   color: red;
-  font-size: 10px;
+  font-size: small;
 }
 
 /* .Login input[type="password"] {
@@ -287,7 +299,7 @@ a:hover {
 .login_button {
   background-color: #06b;
   width: 45%;
-  height: 15%;
+  height: 10%;
   border-radius: 12px;
   box-sizing: border-box;
   border: 10px;
@@ -296,13 +308,14 @@ a:hover {
 }
 
 .signup-link {
-  text-decoration: none;
-  width: 50%;
-  height: 15%;
+  background-color: #06b;
+  width: 45%;
+  height: 10%;
   border-radius: 12px;
-  border: 0;
   box-sizing: border-box;
+  border: 10px;
   font-size: 1rem;
+  margin-right: 5px;
 }
 
 .Login svg {
@@ -311,7 +324,7 @@ a:hover {
 
 .Login {
   margin-top: 100px;
-  margin-left: 17px;
+  margin-left: 35px;
 }
 
 /* Login Page */
@@ -330,14 +343,14 @@ a:hover {
   color: rgba(255, 255, 255, 0.672);
 }
 
-.searchRestaurantBtn {
+/* .searchRestaurantBtn {
   border-radius: 25px;
   border: 2px solid #73AD21;
   padding: 20px;
   width: 200px;
   height: 75px;
   background-color: transparent;
-}
+} */
 
 .searchSandwichesBtn {
   border-radius: 25px;

@@ -3,6 +3,9 @@ import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Container from "react-bootstrap/Container";
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 
 function SearchByRestaurant() {
 
@@ -68,19 +71,23 @@ function SearchByRestaurant() {
     }
 
     return (
-        <div className="restaurant-search">
-            <div className="main">
-                <header className="header-container">
-                    <span>Welcome, {user.username}!</span>
-                    <div className="header-buttons" class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button onClick={handleProfileNav} class="btn btn-primary me-md-2" type="button">Profile</button>
-                        <button class="btn btn-primary" type="button"><Link className ="link-to-log-out" to={'/'} >Log Out</Link></button>
-                    </div>
-                </header>
-                <br />
-                <div>
-                    <button onClick={handleSearchSandwichNav} className="searchSandwichesBtn">Search by Sandwiches</button>
-                </div>
+        <div>
+            <Navbar expand="lg" className="bg-body-transparent">
+                <Container>
+                    <Navbar.Brand>Welcome {user.username}!</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="me-auto">
+                            <Nav.Link onClick={handleSearchSandwichNav}>Search by Sandwiches</Nav.Link>
+                            <Nav.Link onClick={handleProfileNav}>Profile</Nav.Link>
+                        </Nav>
+                        <Nav>
+                            <Nav.Link href={'/'}>Log Out</Nav.Link>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
+            <div>
                 <div className="searchInputs">
                     <input type="text" placeholder="Search by Restaurants" value={wordEntered} onChange={handleFilter} />
                     <div className="searchIcon">

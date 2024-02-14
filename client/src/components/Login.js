@@ -5,6 +5,9 @@ import * as yup from "yup"
 import { GiSandwich } from "react-icons/gi";
 import { useDispatch } from "react-redux";
 import { loginSuccess } from "./userActions";
+import FloatingLabel from "react-bootstrap/esm/FloatingLabel";
+import Form from 'react-bootstrap/Form'
+import Button from "react-bootstrap/esm/Button";
 
 function Login() {
 
@@ -48,41 +51,49 @@ function Login() {
 
   return (
     <div>
-        <h1 className = "login-title">Unhinged</h1>
+            
+        <h1 className = "login-title"><GiSandwich style={{ fontSize: '50px' }}/> Unhinged <GiSandwich style={{ fontSize: '50px' }}/></h1>
         <div className="Login">
           <form onSubmit = {formik.handleSubmit}>
-            <input 
-              type = "email"
-              name = "email"
-              onChange={formik.handleChange}
-              value = {formik.values.email}
-              placeholder = "Email"
-              onBlur = {formik.handleBlur}>
-            </input>
-            <GiSandwich style={{ fontSize: '40px' }}/>
+            <FloatingLabel
+              controlId="floatingInput"
+              label="Email address"
+              className="mb-3"
+              >
+              <Form.Control 
+                type = "email"
+                name = "email"
+                onChange={formik.handleChange}
+                value = {formik.values.email}
+                placeholder = "Email"
+                onBlur = {formik.handleBlur}
+                />
+              </FloatingLabel>
             <p>
               {formik.touched.email && formik.errors.email ? (
                 <h3>{formik.errors.email}</h3>
               ) : ('')}
             </p>
-            <input 
-              type="password"
-              name="password"
-              value={formik.values.password}
-              onChange={formik.handleChange}
-              placeholder="Password"
-              onBlur={formik.handleBlur}>
-            </input>
-            <GiSandwich style={{ fontSize: '40px' }}/>
+            <FloatingLabel
+              controlId="floatingPassword"
+              label="Password"
+              >
+              <Form.Control 
+                type="password"
+                name="password"
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                placeholder= "Password"
+                onBlur={formik.handleBlur}
+              />
+            </FloatingLabel>
             <p>
               {formik.touched.password && formik.errors.password ? (
                   <h3>{formik.errors.password}</h3>
               ) : ('')}
             </p>
-            <button className="login_button" type="submit" onClick={formik.handleSubmit}>Log In</button>
-            <button className="signup-link">
-              <Link className="link-to-signup" to={`/signup`}>Sign Up Here</Link>
-            </button>
+            <Button className="login_button" type="submit" onClick={formik.handleSubmit}>Log In</Button>
+            <Button className="signup-link" href={`/signup`}>Sign Up Here</Button>
           </form>
         </div>
       </div>

@@ -2,20 +2,18 @@ import React, { useContext, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import SearchBar from "./SearchBar";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 
 function SearchSandwiches() {
 // ./sandwiches
 
     // const user = useSelector((state) => state.currentUser)
     // console.log(user)
-
     // user ID state management
     const { state } = useLocation()
-
-    // console.log('state.currentUser:', state.currentUser);
     const { currentUser: initialUser } = state
-    // console.log('initialUser:', initialUser);
-
     const navigate = useNavigate()
     // console.log(currentUser)
     // user ID state management
@@ -55,25 +53,29 @@ function SearchSandwiches() {
         navigate(`/user_profile/${user.id}`, { state: { currentUser: user }})
     }
 
+    function handleRestaurantNav() {
+        navigate('/restaurants', { state: { currentUser: user }})
+    }
+
     return (
-        <div className = "Sandwich-Search-page">
-            <div className="main">
-                <header className="header-container">
-                    <span>Welcome, {user.username}!</span>
-                    <div className="header-buttons" class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button onClick={handleProfileNav} class="btn btn-primary me-md-2" type="button">Profile</button>
-                        <button class="btn btn-primary" type="button"><Link className ="link-to-log-out" to={'/'} >Log Out</Link></button>
-                    </div>
-                </header>
-                <br />
-                <div>
-                    <button onClick={(() => {
-                        navigate('/restaurants', { state: { currentUser: user }})})} className="searchRestaurantBtn">Search by Restaurant
-                    </button>
-                </div>
-                <div class="container">
-                    <SearchBar placeholder="Search for Sandwich..." sandwiches={sandwiches} handleSandwichProfileNav = {handleSandwichProfileNav}/>
-                </div>
+        <div>
+            <Navbar expand="lg" className="bg-body-transparent">
+                <Container>
+                    <Navbar.Brand>Welcome {user.username}!</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="me-auto">
+                            <Nav.Link onClick={handleRestaurantNav}>Search by Restaurant</Nav.Link>
+                            <Nav.Link onClick={handleProfileNav}>Profile</Nav.Link>
+                        </Nav>
+                        <Nav>
+                            <Nav.Link href={'/'}>Log Out</Nav.Link>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
+            <div class="container">
+                <SearchBar placeholder="Search for Sandwich..." sandwiches={sandwiches} handleSandwichProfileNav = {handleSandwichProfileNav}/>
             </div>
         </div>
     )

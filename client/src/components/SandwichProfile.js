@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useParams, useLocation, useNavigate } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 
 
 function SandwichProfile() {
@@ -60,6 +63,7 @@ function SandwichProfile() {
     }
     
 
+    console.log(user)
     function handleProfileNav() {
         navigate(`/user_profile/${user.id}`, { state: { currentUser: user }})
     }
@@ -69,35 +73,39 @@ function SandwichProfile() {
     }
 
     return (
-        <div className="Sandwich-Profile main">
-            <div className="main">
-                <div className="header">
-                    <header className="header-container">
-                        <span>Welcome, {user.username}!</span>
-                        <div className="header-buttons" class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button onClick={handleProfileNav} class="btn btn-primary me-md-2" type="button">Profile</button>
-                            <button class="btn btn-primary" type="button"><Link className ="link-to-log-out" to={'/'} >Log Out</Link></button>
-                        </div>
-                    </header>
-                    <br />
-                    <div>
-                        <button onClick={handleSearchSandwichNav} className="searchSandwichesBtn">Search by Sandwiches</button>
-                    </div>
-                    <div className="sandwich-title">
-                        <h2>{sandwich.sandwich_name}</h2>
-                    </div>
-                    <div className="sandwich-img-div">
-                        <img
+        <div>
+            <div class="fixed-top">
+                <Navbar expand="lg" className="bg-body-transparent">
+                    <Container>
+                        <Navbar.Brand>Welcome {user.username}!</Navbar.Brand>
+                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                        <Navbar.Collapse id="basic-navbar-nav">
+                            <Nav className="me-auto">
+                                <Nav.Link onClick={handleSearchSandwichNav}>Search by Sandwiches</Nav.Link>
+                                <Nav.Link onClick={handleProfileNav}>Profile</Nav.Link>
+                            </Nav>
+                            <Nav>
+                                <Nav.Link href={'/'}>Log Out</Nav.Link>
+                            </Nav>
+                        </Navbar.Collapse>
+                    </Container>
+                </Navbar>
+            </div>
+            <div className="sandwich-profile">
+                <div className="sandwich-title">
+                    <h2>{sandwich.sandwich_name}</h2>
+                </div>
+                <div className="sandwich-img-div">
+                    <img
                         className="sandwich-img"
                         src = {sandwich.image}
                         alt = {sandwich.sandwich_name}
-                        ></img>
-                    </div>
-                    <div>
-                        <button onClick={handleCheckIn}>
-                            Check In
-                        </button>
-                    </div>
+                    ></img>
+                </div>
+                <div>
+                    <button onClick={handleCheckIn}>
+                        Check In
+                    </button>
                 </div>
             </div>
         </div>
@@ -105,3 +113,35 @@ function SandwichProfile() {
 }
 
 export default SandwichProfile
+        // <div className="Sandwich-Profile main">
+        //     <div className="main">
+        //         <div className="header">
+        //             <header className="header-container">
+        //                 <span>Welcome, {user.username}!</span>
+        //                 <div className="header-buttons" class="d-grid gap-2 d-md-flex justify-content-md-end">
+        //                     <button onClick={handleProfileNav} class="btn btn-primary me-md-2" type="button">Profile</button>
+        //                     <button class="btn btn-primary" type="button"><Link className ="link-to-log-out" to={'/'} >Log Out</Link></button>
+        //                 </div>
+        //             </header>
+        //             <br />
+        //             <div>
+        //                 <button onClick={handleSearchSandwichNav} className="searchSandwichesBtn">Search by Sandwiches</button>
+        //             </div>
+        //             <div className="sandwich-title">
+        //                 <h2>{sandwich.sandwich_name}</h2>
+        //             </div>
+        //             <div className="sandwich-img-div">
+        //                 <img
+        //                 className="sandwich-img"
+        //                 src = {sandwich.image}
+        //                 alt = {sandwich.sandwich_name}
+        //                 ></img>
+        //             </div>
+        //             <div>
+        //                 <button onClick={handleCheckIn}>
+        //                     Check In
+        //                 </button>
+        //             </div>
+        //         </div>
+        //     </div>
+        // </div>
