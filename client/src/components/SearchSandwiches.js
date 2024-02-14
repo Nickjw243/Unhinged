@@ -5,36 +5,39 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { GiSandwich } from "react-icons/gi";
+
 
 function SearchSandwiches() {
 // ./sandwiches
 
-    // const user = useSelector((state) => state.currentUser)
+    const user = useSelector((state) => state.currentUser)
     // console.log(user)
     // user ID state management
-    const { state } = useLocation()
-    const { currentUser: initialUser } = state
+    // const { state } = useLocation()
+    // const { currentUser: initialUser } = state
     const navigate = useNavigate()
     // console.log(currentUser)
     // user ID state management
 
-    const [user, setUser] = useState(initialUser || null)
+    // const [user, setUser] = useState(initialUser || null)
+
+    // console.log(user)
+    // useEffect(() => {
+    //     const storedUser = localStorage.getItem('user')
+    //     console.log('Stored user', storedUser)
+    //     if (storedUser) {
+    //         setUser(JSON.parse(storedUser))
+    //     }
+    // }, [])
+
+    // useEffect(() => {
+    //     if (user) {
+    //         localStorage.setItem('currentUser', JSON.stringify(user))
+    //     }
+    // }, [user])
 
     console.log(user)
-    useEffect(() => {
-        const storedUser = localStorage.getItem('user')
-        console.log('Stored user', storedUser)
-        if (storedUser) {
-            setUser(JSON.parse(storedUser))
-        }
-    }, [])
-
-    useEffect(() => {
-        if (user) {
-            localStorage.setItem('currentUser', JSON.stringify(user))
-        }
-    }, [user])
-
     const [sandwiches, setSandwiches] = useState([])
 
     useEffect(() => {
@@ -46,10 +49,12 @@ function SearchSandwiches() {
     }, [])
 
     function handleSandwichProfileNav() {
-        navigate('/sandwiches/:id', { state: { currentUser: user }})
+        navigate('/sandwiches/:id')
+        // navigate('/sandwiches/:id', { state: { currentUser: user }})
     }
 
     function handleProfileNav() {
+        // navigate(`/user_profile/${user.id}`)
         navigate(`/user_profile/${user.id}`, { state: { currentUser: user }})
     }
 
@@ -73,6 +78,7 @@ function SearchSandwiches() {
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
+                <GiSandwich style={{ fontSize: '20px' }}/> Unhinged <GiSandwich style={{ fontSize: '20px' }}/>
             </Navbar>
             <div class="container">
                 <SearchBar placeholder="Search for Sandwich..." sandwiches={sandwiches} handleSandwichProfileNav = {handleSandwichProfileNav}/>

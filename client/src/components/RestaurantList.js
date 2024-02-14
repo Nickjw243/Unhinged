@@ -9,27 +9,27 @@ import { GiSandwich } from "react-icons/gi";
 
 function RestaurantList() {
 
-    // const user = useSelector((state) => state.currentUser)
+    const user = useSelector((state) => state.currentUser)
     // user ID state management
-    const { state } = useLocation()
-    const { currentUser: initialUser } = state
+    // const { state } = useLocation()
+    // const { currentUser: initialUser } = state
     const navigate = useNavigate()
     // user ID state management
 
-    const [user, setUser] = useState(initialUser || null)
+    // const [user, setUser] = useState(initialUser || null)
 
-    useEffect(() => {
-        const storedUser = localStorage.getItem('currentUser')
-        if (storedUser) {
-            setUser(JSON.parse(storedUser))
-        }
-    }, [])
+    // useEffect(() => {
+    //     const storedUser = localStorage.getItem('currentUser')
+    //     if (storedUser) {
+    //         setUser(JSON.parse(storedUser))
+    //     }
+    // }, [])
 
-    useEffect(() => {
-        if (user) {
-            localStorage.setItem('currentUser', JSON.stringify(user))
-        }
-    }, [user])
+    // useEffect(() => {
+    //     if (user) {
+    //         localStorage.setItem('currentUser', JSON.stringify(user))
+    //     }
+    // }, [user])
 
     const [restaurant, setRestaurant] = useState({})
     const params = useParams()
@@ -46,16 +46,18 @@ function RestaurantList() {
     }
 
     function handleProfileNav() {
-        navigate(`/user_profile/${user.id}`, { state: { currentUser: user }})
+        navigate(`/user_profile/${user.id}`)
+        // navigate(`/user_profile/${user.id}`, { state: { currentUser: user }})
     }
 
     function handleSearchSandwichNav() {
-        navigate('/sandwiches', { state: { currentUser: user }})
+        navigate('/sandwiches')
+        // navigate('/sandwiches', { state: { currentUser: user }})
     }
 
     return (
         <div>
-            <div class="fixed-top">
+            {/* <div class="fixed-top"> */}
                 <Navbar expand="lg" className="bg-body-transparent">
                     <Container>
                         <Navbar.Brand>Welcome {user.username}!</Navbar.Brand>
@@ -72,7 +74,7 @@ function RestaurantList() {
                     </Container>
                     <GiSandwich style={{ fontSize: '20px' }}/> Unhinged <GiSandwich style={{ fontSize: '20px' }}/>
                 </Navbar>
-            </div>
+            {/* </div> */}
             <div className="restaurant-menu">
                 <h1>{restaurant.restaurant_name}</h1>
                 <div className="restaurant-sandwich-div">

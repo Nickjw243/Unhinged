@@ -1,7 +1,8 @@
-/* :root {
-  --base-color: #06b;
-  --hover-color: rgba(220, 120, 150, 1);
-} */
+:root {
+  /* --base-color: #06b;
+  --hover-color: rgba(220, 120, 150, 1); */
+  width: 100%;
+}
 
 body {
   display: flex;
@@ -226,20 +227,20 @@ a:hover {
   margin-left: 5px;
 }
 
-.sandwich-list {
+/* .sandwich-list {
   display: flex;
   flex-wrap: wrap;
-}
+} */
 
-.sandwich-item {
+/* .sandwich-item {
   margin-right: 20px;
   margin-bottom: 20px;
   width: 100%;
-}
+} */
 
 .userprofile-pictures {
-  /* width: 100%; */
-  max-width: 400px;
+  width: 25%;
+  /* max-width: 400px; */
   /* height: 100px; */
 }
 /* User Profile CSS */

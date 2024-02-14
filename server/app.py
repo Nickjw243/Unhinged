@@ -46,28 +46,34 @@ def users():
 
     return response
 
-@app.route('/users/<int:id>', methods = ['PATCH'])
+@app.route('/users/<int:id>', methods = ['GET','PATCH'])
 def users_by_id(id):
     selected_user = Users.query.filter(Users.id == id).first()
 
     if selected_user:
-        try:
-            form_data = request.get_json()
-
-            for attr in form_data:
-                setattr(selected_user, attr, form_data[attr])
-
-            db.session.commit()
-
+        if request.method == 'GET':
             response = make_response(
-                selected_user.to_dict(),
-                201
+                selected_user.to_dict(rules = ('-checkin.sandwich', )),
+                200
             )
-        except ValueError:
-            response = make_response(
-                {'Error': 'Validation error!'},
-                400
-            )
+        elif request.method == 'PATCH':
+            try:
+                form_data = request.get_json()
+
+                for attr in form_data:
+                    setattr(selected_user, attr, form_data[attr])
+
+                db.session.commit()
+
+                response = make_response(
+                    selected_user.to_dict(),
+                    201
+                )
+            except ValueError:
+                response = make_response(
+                    {'Error': 'Validation error!'},
+                    400
+                )
     else:
         response = make_response(
             {'Error': 'User not found'},

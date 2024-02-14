@@ -40,7 +40,8 @@ function Login() {
             ) 
             if (user) {
               dispatch(loginSuccess(user))
-              navigate(`/sandwiches`, {state: { currentUser: user }});
+              navigate('/sandwiches')
+              // navigate(`/sandwiches`, {state: { currentUser: user }});
             }
         })
         .catch((error) => {

@@ -4,32 +4,32 @@ import { Link, useParams, useLocation, useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-
+import { GiSandwich } from "react-icons/gi";
 
 function SandwichProfile() {
 
-    // const user = useSelector((state) => state.currentUser)
+    const user = useSelector((state) => state.currentUser)
     // user ID state management
-    const { state } = useLocation()
-    const { currentUser: initialUser } = state
+    // const { state } = useLocation()
+    // const { currentUser: initialUser } = state
     const navigate = useNavigate()
     // console.log(currentUser)
     // user ID state management
 
-    const [user, setUser] = useState(initialUser || null)
+    // const [user, setUser] = useState(initialUser || null)
 
-    useEffect(() => {
-        const storedUser = localStorage.getItem('currentUser')
-        if (storedUser) {
-            setUser(JSON.parse(storedUser))
-        }
-    }, [])
+    // useEffect(() => {
+    //     const storedUser = localStorage.getItem('currentUser')
+    //     if (storedUser) {
+    //         setUser(JSON.parse(storedUser))
+    //     }
+    // }, [])
 
-    useEffect(() => {
-        if (user) {
-            localStorage.setItem('currentUser', JSON.stringify(user))
-        }
-    }, [user])
+    // useEffect(() => {
+    //     if (user) {
+    //         localStorage.setItem('currentUser', JSON.stringify(user))
+    //     }
+    // }, [user])
 
     const [sandwich, setSandwich] = useState({})
     const params = useParams()
@@ -65,16 +65,18 @@ function SandwichProfile() {
 
     console.log(user)
     function handleProfileNav() {
-        navigate(`/user_profile/${user.id}`, { state: { currentUser: user }})
+        navigate(`/user_profile/${user.id}`)
+        // navigate(`/user_profile/${user.id}`, { state: { currentUser: user }})
     }
 
     function handleSearchSandwichNav() {
-        navigate('/sandwiches', { state: { currentUser: user }})
+        navigate('/sandwiches')
+        // navigate('/sandwiches', { state: { currentUser: user }})
     }
 
     return (
         <div>
-            <div class="fixed-top">
+            {/* <div class="fixed-top"> */}
                 <Navbar expand="lg" className="bg-body-transparent">
                     <Container>
                         <Navbar.Brand>Welcome {user.username}!</Navbar.Brand>
@@ -89,8 +91,9 @@ function SandwichProfile() {
                             </Nav>
                         </Navbar.Collapse>
                     </Container>
+                    <GiSandwich style={{ fontSize: '20px' }}/> Unhinged <GiSandwich style={{ fontSize: '20px' }}/>
                 </Navbar>
-            </div>
+            {/* </div> */}
             <div className="sandwich-profile">
                 <div className="sandwich-title">
                     <h2>{sandwich.sandwich_name}</h2>

@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link, useLocation, useNavigate} from "react-router-dom"
+import { useSelector } from "react-redux";
 
 
 function SearchBar({placeholder, sandwiches}) {
 
     // user ID state management
-    const { state } = useLocation()
-    const { currentUser } = state
+    const user = useSelector((state) => state)
+    // const { state } = useLocation()
+    // const { currentUser } = state
     const navigate = useNavigate()
     // console.log(currentUser)
     // user ID state management
@@ -74,7 +76,8 @@ function SearchBar({placeholder, sandwiches}) {
                         return (
                         <a className="sandwichItem"> 
                             <p onClick={() => {
-                                navigate(`/sandwiches/${value.id}`, { state: { currentUser }})
+                                navigate(`/sandwiches/${value.id}`)
+                                // navigate(`/sandwiches/${value.id}`, { state: { currentUser }})
                             }}>{value.sandwich_name}</p>
                         </a>)
                     })}
