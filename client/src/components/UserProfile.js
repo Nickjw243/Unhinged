@@ -123,7 +123,7 @@ function UserProfile() {
                                         alt={uniqueSandwichName}
                                         rounded
                                         ></Image>
-                                    <div>
+                                    <div className="sandwich-details">
                                         <p 
                                             className="sandwich-name">
                                                 {uniqueSandwichName}
