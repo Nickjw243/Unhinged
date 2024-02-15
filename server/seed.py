@@ -67,6 +67,111 @@ if __name__ == '__main__':
                 restaurant_id = 1,
                 image = 'https://129534174.cdn6.editmysite.com/uploads/1/2/9/5/129534174/s133514416528582280_p1046_i3_w720.jpeg?dpr=2'
             ),
+            Sandwiches(
+                sandwich_name = 'Alcatraz',
+                restaurant_id = 1,
+                image = 'https://129534174.cdn6.editmysite.com/uploads/1/2/9/5/129534174/s133514416528582280_p11_i3_w1080.png?dpr=2'
+            ),
+            Sandwiches(
+                sandwich_name = 'All Up In Your Grill',
+                restaurant_id = 1,
+                image = 'https://129534174.cdn6.editmysite.com/uploads/1/2/9/5/129534174/s133514416528582280_p796_i1_w1197.jpeg?dpr=2'
+            ),
+            Sandwiches(
+                sandwich_name = 'BBBLT',
+                restaurant_id = 1,
+                image = 'https://129534174.cdn6.editmysite.com/uploads/1/2/9/5/129534174/s133514416528582280_p38_i3_w1236.jpeg?dpr=2'
+            ),
+            Sandwiches(
+                sandwich_name = 'The Beef',
+                restaurant_id = 1,
+                image = 'https://129534174.cdn6.editmysite.com/uploads/1/2/9/5/129534174/s133514416528582280_p6_i3_w1077.jpeg?dpr=2'
+            ),
+            Sandwiches(
+                sandwich_name = 'Beefy Popper Crunch',
+                restaurant_id = 1,
+                image = 'https://129534174.cdn6.editmysite.com/uploads/1/2/9/5/129534174/s133514416528582280_p401_i2_w720.jpeg?dpr=2'
+            ),
+            Sandwiches(
+                sandwich_name = "Big Willie's Meatball",
+                restaurant_id = 1,
+                image = 'https://129534174.cdn6.editmysite.com/uploads/1/2/9/5/129534174/s133514416528582280_p18_i4_w1080.png?dpr=2'
+            ),
+            Sandwiches(
+                sandwich_name = 'Boy Howdee',
+                restaurant_id = 1,
+                image = 'https://129534174.cdn6.editmysite.com/uploads/1/2/9/5/129534174/s133514416528582280_p14_i2_w2560.jpeg?dpr=2'
+            ),
+            Sandwiches(
+                sandwich_name = 'Buffalo Soldier',
+                restaurant_id = 1,
+                image = 'https://129534174.cdn6.editmysite.com/uploads/1/2/9/5/129534174/s133514416528582280_p1158_i1_w1440.jpeg?dpr=2'
+            ),
+            Sandwiches(
+                sandwich_name = 'Chicka Chicka Parm Parm',
+                restaurant_id = 1,
+                image = 'https://129534174.cdn6.editmysite.com/uploads/1/2/9/5/129534174/s133514416528582280_p26_i2_w960.jpeg?dpr=2'
+            ),
+            Sandwiches(
+                sandwich_name = 'Club',
+                restaurant_id = 1,
+                image = 'https://129534174.cdn6.editmysite.com/uploads/1/2/9/5/129534174/s133514416528582280_p41_i4_w1080.png?dpr=2'
+            ),
+            Sandwiches(
+                sandwich_name = 'Clubhouse',
+                restaurant_id = 1,
+                image = 'https://129534174.cdn6.editmysite.com/uploads/1/2/9/5/129534174/s133514416528582280_p869_i2_w958.jpeg?dpr=2'
+            ),
+            Sandwiches(
+                sandwich_name = 'Cold Smoked Salmon',
+                restaurant_id = 1,
+                image = 'https://129534174.cdn6.editmysite.com/uploads/1/2/9/5/129534174/s133514416528582280_p16_i4_w1080.png?dpr=2'
+            ),
+            Sandwiches(
+                sandwich_name = 'The Corsican',
+                restaurant_id = 1,
+                image = 'https://129534174.cdn6.editmysite.com/uploads/1/2/9/5/129534174/s133514416528582280_p1270_i1_w720.jpeg?dpr=2'
+            ),
+            Sandwiches(
+                sandwich_name = 'Crustacean Nation',
+                restaurant_id = 1,
+                image = 'https://129534174.cdn6.editmysite.com/uploads/1/2/9/5/129534174/s133514416528582280_p1250_i3_w1440.jpeg?dpr=2'
+            ),
+            Sandwiches(
+                sandwich_name = 'Danimal',
+                restaurant_id = 1,
+                image = 'https://129534174.cdn6.editmysite.com/uploads/1/2/9/5/129534174/s133514416528582280_p44_i3_w1080.png?dpr=2'
+            ),
+            Sandwiches(
+                sandwich_name = 'Dijon Don',
+                restaurant_id = 1,
+                image = 'https://129534174.cdn6.editmysite.com/uploads/1/2/9/5/129534174/s133514416528582280_p659_i2_w1080.png?dpr=2'
+            ),
+            Sandwiches(
+                sandwich_name = 'Enzo Gorlomi',
+                restaurant_id = 1,
+                image = 'https://129534174.cdn6.editmysite.com/uploads/1/2/9/5/129534174/s133514416528582280_p1161_i2_w1080.png?dpr=2'
+            ),
+            Sandwiches(
+                sandwich_name = 'Fight Club',
+                restaurant_id = 1,
+                image = 'https://129534174.cdn6.editmysite.com/uploads/1/2/9/5/129534174/s133514416528582280_p30_i3_w1439.jpeg?dpr=2'
+            ),
+            Sandwiches(
+                sandwich_name = 'Fireball',
+                restaurant_id = 1,
+                image = 'https://129534174.cdn6.editmysite.com/uploads/1/2/9/5/129534174/s133514416528582280_p25_i6_w1080.png?dpr=2'
+            ),
+            Sandwiches(
+                sandwich_name = 'Frenchy',
+                restaurant_id = 1,
+                image = 'https://129534174.cdn6.editmysite.com/uploads/1/2/9/5/129534174/s133514416528582280_p22_i3_w909.jpeg?dpr=2'
+            ),
+            Sandwiches(
+                sandwich_name = 'General Patton',
+                restaurant_id = 1,
+                image = 'https://129534174.cdn6.editmysite.com/uploads/1/2/9/5/129534174/s133514416528582280_p42_i2_w1000.jpeg?dpr=2'
+            ),
 
             #Gioia's
             Sandwiches(

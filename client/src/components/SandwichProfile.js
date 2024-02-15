@@ -101,6 +101,9 @@ function SandwichProfile() {
                     <h2>{sandwich.sandwich_name}</h2>
                     <Button onClick={handleCheckIn} variant="success">Check In</Button>
                 </div>
+                <div className="sandwich-info">
+                    <h4>{sandwich.restaurant.restaurant_name} - {sandwich.restaurant.restaurant_location}</h4>
+                </div>
                 <div className="sandwich-img-div">
                     <Image
                         className="sandwich-img"

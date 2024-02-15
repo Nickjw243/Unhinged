@@ -356,8 +356,20 @@ a:hover {
 .sandwich-item {
   display: flex;
   justify-content: center;
+  height: 350px;
+  /* width: 100%;
+  max-width: 300px; */
 }
+
+/* .sandwich-item img{
+  height: 10px;
+} */
 
 .sandwich-name {
   font-size: larger;
+}
+
+.sandwich-info {
+  display: flex;
+  justify-content: center;
 }
