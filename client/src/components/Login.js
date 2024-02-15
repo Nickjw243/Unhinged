@@ -72,7 +72,7 @@ function Login() {
               </FloatingLabel>
             <p>
               {formik.touched.email && formik.errors.email ? (
-                <h3>{formik.errors.email}</h3>
+                <h3 style={{ fontSize: '16px', color: 'red'}}>{formik.errors.email}</h3>
               ) : ('')}
             </p>
             <FloatingLabel
@@ -90,10 +90,10 @@ function Login() {
             </FloatingLabel>
             <p>
               {formik.touched.password && formik.errors.password ? (
-                  <h3>{formik.errors.password}</h3>
+                  <h3 style={{ fontSize: '16px', color: 'red'}}>{formik.errors.password}</h3>
               ) : ('')}
             </p>
-            <Button className="login_button" type="submit" onClick={formik.handleSubmit}>Log In</Button>
+            <Button className="login_button" type="submit">Log In</Button>
             <Button className="signup-link" href={`/signup`}>Sign Up Here</Button>
           </form>
         </div>

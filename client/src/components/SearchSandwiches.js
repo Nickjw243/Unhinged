@@ -64,7 +64,7 @@ function SearchSandwiches() {
 
     return (
         <div>
-            <Navbar expand="lg" className="bg-body-transparent">
+            <Navbar expand="" className="bg-body-transparent">
                 <Container>
                     <Navbar.Brand>Welcome {user.username}!</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -78,10 +78,12 @@ function SearchSandwiches() {
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
-                <GiSandwich style={{ fontSize: '20px' }}/> Unhinged <GiSandwich style={{ fontSize: '20px' }}/>
             </Navbar>
-            <div class="container">
-                <SearchBar placeholder="Search for Sandwich..." sandwiches={sandwiches} handleSandwichProfileNav = {handleSandwichProfileNav}/>
+            <div>
+                <h1 className = "title"><GiSandwich style={{ fontSize: '50px' }}/> Unhinged <GiSandwich style={{ fontSize: '50px' }}/></h1>
+                <div class="container">
+                    <SearchBar placeholder="Search for Sandwich..." sandwiches={sandwiches} handleSandwichProfileNav = {handleSandwichProfileNav}/>
+                </div>
             </div>
         </div>
     )

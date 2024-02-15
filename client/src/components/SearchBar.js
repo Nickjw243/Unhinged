@@ -37,30 +37,6 @@ function SearchBar({placeholder, sandwiches}) {
         setWordEntered("")
     }
 
-    // return (
-    //     <div className="sandwich-search-container">
-    //         <div
-    //         <div className="searchInputs">
-    //             <input type="text" placeholder={placeholder} value={wordEntered} onChange={handleFilter} />
-    //             <div className="searchIcon">
-    //                 {filteredSandwiches.length === 0 ? <SearchIcon /> : <CloseIcon id="clearBtn" onClick={clearInput}/>}
-    //             </div>
-    //         </div>
-    //         {filteredSandwiches.length != 0 && (
-    //         <div className="dataResult">
-    //             {filteredSandwiches.slice(0, 15).map((value, key) => {
-    //                 return (
-    //                 <a className="sandwichItem"> 
-    //                     <p onClick={(() => {
-    //                         navigate(`/sandwiches/${value.id}`, { state: { currentUser }})})}>{value.sandwich_name}
-    //                     </p>
-    //                 </a>)
-    //             })}
-    //         </div>
-    //         )}
-    //     </div>
-    // )
-
     return (
         <div className="sandwich-search-container">
             <div className="sandwich-search">

@@ -75,7 +75,7 @@ function SearchByRestaurant() {
 
     return (
         <div>
-            <Navbar expand="lg" className="bg-body-transparent">
+            <Navbar expand="" className="bg-body-transparent">
                 <Container>
                     <Navbar.Brand>Welcome {user.username}!</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -89,27 +89,31 @@ function SearchByRestaurant() {
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
-                <GiSandwich style={{ fontSize: '20px' }}/> Unhinged <GiSandwich style={{ fontSize: '20px' }}/>
             </Navbar>
-            <div>
-                <div className="searchInputs">
-                    <input type="text" placeholder="Search by Restaurants" value={wordEntered} onChange={handleFilter} />
-                    <div className="searchIcon">
-                        {filteredRestaurants.length === 0 ? <SearchIcon /> : <CloseIcon id="clearBtn" onClick={clearInput}/>}
+            <h1 className = "title"><GiSandwich style={{ fontSize: '50px' }}/> Unhinged <GiSandwich style={{ fontSize: '50px' }}/></h1>
+            <div className="container">
+                <div className="restaurant-search-container">
+                    <div className="restaurant-search">
+                        <div className="searchInputs">
+                            <input type="text" placeholder="Search by Restaurants" value={wordEntered} onChange={handleFilter} />
+                            <div className="searchIcon">
+                                {filteredRestaurants.length === 0 ? <SearchIcon /> : <CloseIcon id="clearBtn" onClick={clearInput}/>}
+                            </div>
+                        </div>
+                        {filteredRestaurants.length != 0 && (
+                        <div className="dataResult">
+                            {filteredRestaurants.slice(0, 15).map((value, key) => {
+                                return (
+                                <a className="restaurantItem"> 
+                                    <p onClick={(() => {
+                                        navigate(`/restaurants/${value.id}`, { state: { currentUser: user }})})}>{value.restaurant_name}
+                                    </p>
+                                </a>)
+                            })}
+                        </div>
+                        )}
                     </div>
                 </div>
-                {filteredRestaurants.length != 0 && (
-                <div className="dataResult">
-                    {filteredRestaurants.slice(0, 15).map((value, key) => {
-                        return (
-                        <a className="restaurantItem"> 
-                            <p onClick={(() => {
-                                navigate(`/restaurants/${value.id}`, { state: { currentUser: user }})})}>{value.restaurant_name}
-                            </p>
-                        </a>)
-                    })}
-                </div>
-                )}
             </div>
         </div>
     )

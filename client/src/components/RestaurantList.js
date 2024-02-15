@@ -58,7 +58,7 @@ function RestaurantList() {
     return (
         <div>
             {/* <div class="fixed-top"> */}
-                <Navbar expand="lg" className="bg-body-transparent">
+                <Navbar expand="" className="bg-body-transparent">
                     <Container>
                         <Navbar.Brand>Welcome {user.username}!</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -72,11 +72,13 @@ function RestaurantList() {
                             </Nav>
                         </Navbar.Collapse>
                     </Container>
-                    <GiSandwich style={{ fontSize: '20px' }}/> Unhinged <GiSandwich style={{ fontSize: '20px' }}/>
                 </Navbar>
             {/* </div> */}
+            <h1 className = "title"><GiSandwich style={{ fontSize: '50px' }}/> Unhinged <GiSandwich style={{ fontSize: '50px' }}/></h1>
             <div className="restaurant-menu">
-                <h1>{restaurant.restaurant_name}</h1>
+                <div className="restaurant-name">
+                    <h1>{restaurant.restaurant_name} - {restaurant.restaurant_location}</h1>
+                </div>
                 <div className="restaurant-sandwich-div">
                     <div className="sandwich-container">
                         {restaurant.sandwich.map((value, key) => {

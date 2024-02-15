@@ -5,6 +5,8 @@ import Container from "react-bootstrap/Container";
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { GiSandwich } from "react-icons/gi";
+import Button from "react-bootstrap/esm/Button";
+import Image from "react-bootstrap/esm/Image";
 
 function SandwichProfile() {
 
@@ -76,8 +78,8 @@ function SandwichProfile() {
 
     return (
         <div>
-            {/* <div class="fixed-top"> */}
-                <Navbar expand="lg" className="bg-body-transparent">
+            <div className="sandwichProfile">
+                <Navbar expand="" className="bg-body-transparent">
                     <Container>
                         <Navbar.Brand>Welcome {user.username}!</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -91,24 +93,21 @@ function SandwichProfile() {
                             </Nav>
                         </Navbar.Collapse>
                     </Container>
-                    <GiSandwich style={{ fontSize: '20px' }}/> Unhinged <GiSandwich style={{ fontSize: '20px' }}/>
                 </Navbar>
-            {/* </div> */}
+            </div>
+            <h1 className = "title"><GiSandwich style={{ fontSize: '50px' }}/> Unhinged <GiSandwich style={{ fontSize: '50px' }}/></h1>
             <div className="sandwich-profile">
                 <div className="sandwich-title">
                     <h2>{sandwich.sandwich_name}</h2>
+                    <Button onClick={handleCheckIn} variant="success">Check In</Button>
                 </div>
                 <div className="sandwich-img-div">
-                    <img
+                    <Image
                         className="sandwich-img"
                         src = {sandwich.image}
                         alt = {sandwich.sandwich_name}
-                    ></img>
-                </div>
-                <div>
-                    <button onClick={handleCheckIn}>
-                        Check In
-                    </button>
+                        rounded
+                    ></Image>
                 </div>
             </div>
         </div>
@@ -116,35 +115,3 @@ function SandwichProfile() {
 }
 
 export default SandwichProfile
-        // <div className="Sandwich-Profile main">
-        //     <div className="main">
-        //         <div className="header">
-        //             <header className="header-container">
-        //                 <span>Welcome, {user.username}!</span>
-        //                 <div className="header-buttons" class="d-grid gap-2 d-md-flex justify-content-md-end">
-        //                     <button onClick={handleProfileNav} class="btn btn-primary me-md-2" type="button">Profile</button>
-        //                     <button class="btn btn-primary" type="button"><Link className ="link-to-log-out" to={'/'} >Log Out</Link></button>
-        //                 </div>
-        //             </header>
-        //             <br />
-        //             <div>
-        //                 <button onClick={handleSearchSandwichNav} className="searchSandwichesBtn">Search by Sandwiches</button>
-        //             </div>
-        //             <div className="sandwich-title">
-        //                 <h2>{sandwich.sandwich_name}</h2>
-        //             </div>
-        //             <div className="sandwich-img-div">
-        //                 <img
-        //                 className="sandwich-img"
-        //                 src = {sandwich.image}
-        //                 alt = {sandwich.sandwich_name}
-        //                 ></img>
-        //             </div>
-        //             <div>
-        //                 <button onClick={handleCheckIn}>
-        //                     Check In
-        //                 </button>
-        //             </div>
-        //         </div>
-        //     </div>
-        // </div>

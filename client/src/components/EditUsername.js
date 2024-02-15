@@ -32,6 +32,7 @@ function EditUsername() {
         setNewUsername(e.target.value)
     }
 
+    console.log(user)
     const handleSubmit = () => {
         fetch(`/users/${userId}`, {
             method: 'PATCH',
@@ -39,7 +40,7 @@ function EditUsername() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ 
-                username: user.username })
+                username: newUsername })
         })
         .then(r => {
             if (r.ok) {

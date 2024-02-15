@@ -9,6 +9,7 @@ import Container from "react-bootstrap/Container";
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar'
 import { GiSandwich } from "react-icons/gi";
+import Image from "react-bootstrap/esm/Image";
 
 
 function UserProfile() {
@@ -47,7 +48,6 @@ function UserProfile() {
 
     const uniqueSandwichNames = Array.from(new Set(checkins.map((checkin) => checkin.sandwich.sandwich_name)));
 
-    console.log(user)
     useEffect(() => {
         fetch('/checkin/' + user.id)
         .then(r => r.json())
@@ -87,7 +87,7 @@ function UserProfile() {
 
     return (
         <div>
-            <Navbar expand="lg" className="bg-body-transparent">
+            <Navbar expand="" className="bg-body-transparent">
                 <Container>
                     <Navbar.Brand>Welcome {user.username}!</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -103,10 +103,12 @@ function UserProfile() {
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
-                <GiSandwich style={{ fontSize: '20px' }}/> Unhinged <GiSandwich style={{ fontSize: '20px' }}/>
             </Navbar>
-            <h1>Check Ins</h1>
-                <div className="sandwich-list">
+            <h1 className = "title"><GiSandwich style={{ fontSize: '50px' }}/> Unhinged <GiSandwich style={{ fontSize: '50px' }}/></h1>
+            <div className="UserProfile-checkin-title">
+                <h2>Check Ins</h2>
+            </div>
+            <div className="sandwich-list">
                     {uniqueSandwichNames.map((uniqueSandwichName) => {
                     // Find the first checkin with the unique sandwich name
                     const firstCheckinWithSameSandwich = checkins.find(
@@ -115,13 +117,22 @@ function UserProfile() {
                     return (
                         <ul>
                             <div key={uniqueSandwichName} className="sandwich-item">
-                                <img
-                                    className="userprofile-pictures"
-                                    src={firstCheckinWithSameSandwich.sandwich.image}
-                                    alt={uniqueSandwichName}
-                                ></img>
-                                <p>{uniqueSandwichName}</p>
-                                <Button variant="danger" onClick={() => handleSandwichDelete(firstCheckinWithSameSandwich.sandwich.id)}>Delete Sandwich</Button>{' '}
+                                    <Image
+                                        className="userprofile-pictures"
+                                        src={firstCheckinWithSameSandwich.sandwich.image}
+                                        alt={uniqueSandwichName}
+                                        rounded
+                                        ></Image>
+                                    <div>
+                                        <p 
+                                            className="sandwich-name">
+                                                {uniqueSandwichName}
+                                        </p>
+                                        <p>
+                                            {firstCheckinWithSameSandwich.sandwich.restaurant.restaurant_name} - {firstCheckinWithSameSandwich.sandwich.restaurant.restaurant_location}
+                                        </p>
+                                        <Button variant="danger" onClick={() => handleSandwichDelete(firstCheckinWithSameSandwich.sandwich.id)}>Delete Sandwich</Button>{' '}
+                                    </div>
                             </div>
                         </ul>
                     );
@@ -132,37 +143,3 @@ function UserProfile() {
     }
     
     export default UserProfile
-    // <div className="User-Profile">
-    //     <div className="main">
-    //         <header className="header-container">
-    //             <span>Welcome, {user.username}!</span>
-    //             <div className="header-buttons" class="d-grid gap-2 d-md-flex justify-content-md-end">
-    //                 <EditUsername />
-    //                 <button onClick={handleSearchSandwichNav} class="btn btn-primary me-md-2" type="button">Search for Sandwiches</button>
-    //                 <button class="btn btn-primary" type="button"><Link className ="link-to-log-out" to={'/'} >Log Out</Link></button>
-    //             </div>
-    //         </header>
-    //         <h1>Check Ins</h1>
-    //         <div className="sandwich-list">
-    //             {uniqueSandwichNames.map((uniqueSandwichName) => {
-    //                 // Find the first checkin with the unique sandwich name
-    //                 const firstCheckinWithSameSandwich = checkins.find(
-    //                     (checkin) => checkin.sandwich.sandwich_name === uniqueSandwichName
-    //                 );
-    //                 return (
-    //                     <ul>
-    //                         <div key={uniqueSandwichName} className="sandwich-item">
-    //                             <img
-    //                                 className="userprofile-pictures"
-    //                                 src={firstCheckinWithSameSandwich.sandwich.image}
-    //                                 alt={uniqueSandwichName}
-    //                             ></img>
-    //                             <p>{uniqueSandwichName}</p>
-    //                             <Button variant="danger" onClick={() => handleSandwichDelete(firstCheckinWithSameSandwich.sandwich.id)}>Delete Sandwich</Button>{' '}
-    //                         </div>
-    //                     </ul>
-    //                 );
-    //             })}
-    //         </div>
-    //     </div>
-    // </div>
