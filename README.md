@@ -3,6 +3,20 @@
 ## Description
 Unhinged is an app where a user can log different sandwiches from any restaurant to keep a record of their favorite sandwiches or to see what they have tried and may venture out to try something new!
 
+## Getting started
+To run this program after cloning, first, cd into the client directory and run the command "npm start" in the terminal. This will start the client. Next, open a new terminal and run the below commands:
+
+ - pipenv shell
+ - cd server
+ - python seed.py
+ - python app.py
+
+This will start the seed file and the database for the backend. 
+
+You can use the default "nick@form.net" as the email address and password "123" to begin or create your own using the "Sign Up Here" button. Once you are logged in, there are only a couple sandwiches and restaurants in the program so far but type any letter and something should drop down for you to find! 
+
+Enjoy!
+
 ## Wireframe
 ![Screenshot 2024-01-30 at 9 26 36 AM](https://github.com/Nickjw243/Unhinged/assets/145048770/576daf4a-7fcf-49ca-bd1a-ae6e246dece0)
 ![Screenshot 2024-01-30 at 9 27 06 AM](https://github.com/Nickjw243/Unhinged/assets/145048770/ce89e0ca-12a0-4ef9-a4e7-5efdfdbf8176)

@@ -114,6 +114,67 @@ function SandwichProfile() {
                 </div>
             </div>
         </div>
+    
+        // <div className="frame">
+        //     <div className="div">
+        //         <Navbar expand="" className="bg-body-transparent">
+        //             <Container>
+        //                 <Navbar.Brand>Welcome {user.username}!</Navbar.Brand>
+        //                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        //                 <Navbar.Collapse id="basic-navbar-nav">
+        //                     <Nav className="me-auto">
+        //                         <Nav.Link onClick={handleSearchSandwichNav}>Search by Sandwiches</Nav.Link>
+        //                         <Nav.Link onClick={handleProfileNav}>Profile</Nav.Link>
+        //                     </Nav>
+        //                     <Nav>
+        //                         <Nav.Link href={'/'}>Log Out</Nav.Link>
+        //                     </Nav>
+        //                 </Navbar.Collapse>
+        //             </Container>
+        //         </Navbar>
+        //         <p className="unhinged">
+        //             <span className = "title"><GiSandwich style={{ fontSize: '50px' }}/> Unhinged <GiSandwich style={{ fontSize: '50px' }}/></span>
+        //         </p>
+        //         <div className="overlap">
+        //             <p className="sandwich-name">
+        //                 <span className="text-wrapper">{sandwich.sandwich_name}</span>
+        //             </p>
+        //         </div>
+        //         <div className="overlap-group">
+        //             <p className="sandwich-image">
+        //             <Image
+        //                 className="sandwich-img"
+        //                 src = {sandwich.image}
+        //                 alt = {sandwich.sandwich_name}
+        //                 rounded
+        //             ></Image>
+        //             </p>
+        //         </div>
+        //         <div className="check-in-button-wrapper">
+        //             <p className="check-in-button">
+        //                 <Button onClick={handleCheckIn} variant="success">Check In</Button>
+        //             </p>
+        //         </div>
+        //         <div className="restaurant-name-wrapper">
+        //             <p className="restaurant-name">
+        //                 <span className="text-wrapper">
+        //                     {sandwich.restaurant.restaurant_name}
+        //                     <br />
+        //                     <br />
+        //                     {sandwich.restaurant.restaurant_location}
+        //                 </span>
+        //             </p>
+        //         </div>
+        //         <div className="sandwich-details-wrapper">
+        //             <p className="sandwich-details">
+        //                 <span className="text-wrapper">Sandwich Details</span>
+        //             </p>
+        //         </div>
+        //     </div>
+        // </div>
+    
+    
+    
     )
 }
 
