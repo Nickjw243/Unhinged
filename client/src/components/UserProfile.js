@@ -108,38 +108,35 @@ function UserProfile() {
             <div className="UserProfile-checkin-title">
                 <h2>Check Ins</h2>
             </div>
-            <div className="sandwich-list">
-                    {uniqueSandwichNames.map((uniqueSandwichName) => {
-                    // Find the first checkin with the unique sandwich name
-                    const firstCheckinWithSameSandwich = checkins.find(
-                        (checkin) => checkin.sandwich.sandwich_name === uniqueSandwichName
-                    );
-                    return (
-                        <ul>
-                            <div key={uniqueSandwichName} className="sandwich-item">
+            <div className="checkin-container">
+                <div className="sandwich-container">
+                    <div className="grid">
+                        {uniqueSandwichNames.map((uniqueSandwichName) => {
+                        // Find the first checkin with the unique sandwich name
+                            const firstCheckinWithSameSandwich = checkins.find(
+                                (checkin) => checkin.sandwich.sandwich_name === uniqueSandwichName
+                            );
+                            return (
+                                <div key={uniqueSandwichName} className="sandwich-card">
                                     <Image
                                         className="userprofile-pictures"
                                         src={firstCheckinWithSameSandwich.sandwich.image}
                                         alt={uniqueSandwichName}
                                         rounded
                                         ></Image>
-                                    <div className="sandwich-details">
-                                        <p 
-                                            className="sandwich-name">
-                                                {uniqueSandwichName}
-                                        </p>
-                                        <p>
-                                            {firstCheckinWithSameSandwich.sandwich.restaurant.restaurant_name} - {firstCheckinWithSameSandwich.sandwich.restaurant.restaurant_location}
-                                        </p>
-                                        <Button variant="danger" onClick={() => handleSandwichDelete(firstCheckinWithSameSandwich.sandwich.id)}>Delete Sandwich</Button>{' '}
-                                    </div>
-                            </div>
-                        </ul>
-                    );
-                })}
+                                        <div className="sandwich-data">
+                                            <h2 className="sandwich-name">{uniqueSandwichName}</h2>
+                                            <p>{firstCheckinWithSameSandwich.sandwich.restaurant.restaurant_name} - {firstCheckinWithSameSandwich.sandwich.restaurant.restaurant_location}</p>
+                                            <Button variant="danger" onClick={() => handleSandwichDelete(firstCheckinWithSameSandwich.sandwich.id)}>Delete Sandwich</Button>{' '}
+                                        </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
             </div>
         </div>
-        )
-    }
+    )
+}
     
     export default UserProfile

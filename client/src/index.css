@@ -172,25 +172,46 @@ a:hover {
   /* margin-top: 25px; */
 }
 
-.restaurant-sandwich-image {
-  height: 200px;
+.sandwich-container {
+  width: 100%;
+  margin: 0px auto;
+  padding: 50px;
+  
 }
 
-/* .sandwich-container {
-  width: 100%
-} */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
 
-.sandwich-container > a {
+.sandwich-card {
+  border-radius: 3px;
+  /* border: 2px solid green; */
+  padding: 40px;
   display: flex;
-  flex-direction: row;
+  flex-direction: wrap;
   align-items: center;
-  text-align: center;
-  text-decoration: none;
-  margin-top: 7px;
+  width: 100%;
+}
+
+.sandwich-card img {
+  width: 60%;
+  height: 100%;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.sandwich-card h2 {
+  font-size: 25px;
+  padding-left: 2%;
 }
 
 .sandwich-search {
   width: 100%;
+}
+
+.sandwich-data {
+  padding-left: 5px;
 }
 
 .restaurant-search {
@@ -265,29 +286,7 @@ a:hover {
 
 .Login Button {
   margin: 5%;
-  /* padding: 5% */
 }
-/* .login_button {
-  background-color: #06b;
-  width: 45%;
-  height: 10%;
-  border-radius: 12px;
-  box-sizing: border-box;
-  border: 10px;
-  font-size: 1rem;
-  margin-right: 5px;
-} */
-
-/* .signup-link {
-  background-color: #06b;
-  width: 45%;
-  height: 10%;
-  border-radius: 12px;
-  box-sizing: border-box;
-  border: 10px;
-  font-size: 1rem;
-  margin-right: 5px;
-} */
 
 .Login svg {
   color: white;
@@ -328,6 +327,7 @@ a:hover {
   margin-top: 40px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .UserProfile-checkin-title {
@@ -335,99 +335,17 @@ a:hover {
   justify-content: center;
 }
 
-.sandwich-list {
-  display: wrap;
-  justify-content: center;
-  align-content: center;
-  place-content: center;
-}
-
 .sandwich-list Button{
   height: 50px;
   place-content: center;
 }
 
-.userprofile-pictures {
-  width: 25%;
-  /* display: flex; */
-  /* justify-content: center; */
-}
-
 .sandwich-item {
   display: flex;
   justify-content: center;
-  /* height: 350px; */
-  /* width: 75%; */
-  /* max-width: 300px; */
-}
-
-/* .sandwich-item img{
-  padding: 0%;
-  margin-left: 5px;
-} */
-
-.sandwich-name {
-  font-size: larger;
 }
 
 .sandwich-info {
   display: flex;
   justify-content: center;
 }
-
-.sandwich-details {
-  margin-top: 45px;
-}
-
-/* .frame {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
-} */
-
-/* .frame .div {
-  border: 1px none;
-  box-shadow: 0px 4px 4px;
-  height: 757px;
-  position: relative;
-  width: 850px;
-} */
-
-/* .frame .text-wrapper {
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: 0;
-  line-height: normal;
-} */
-
-/* .frame .overlap {
-  background-color: #d9d9d9;
-  height: 65px;
-  left: 284px;
-  position: absolute;
-  top: 83px;
-  width: 282px;
-} */
-
-/* .frame .sandwich-name {
-  color: #000000;
-  font-family: "Inter", Helvetica;
-  font-size: 16px;
-  font-weight: 400;
-  left: 39px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  text-align: center;
-  top: 17px;
-  width: 204px;
-} */
-
-/* .frame .overlap-group {
-  height: 244px;
-  left: 47px;
-  position: absolute;
-  top: 178px;
-  width: 329px;
-} */

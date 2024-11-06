@@ -81,24 +81,22 @@ function RestaurantList() {
                 </div>
                 <div className="restaurant-sandwich-div">
                     <div className="sandwich-container">
-                        {restaurant.sandwich.map((value, key) => {
-                            return(
-                                <a onClick={(() => {
+                        <div className="grid">
+                            {restaurant.sandwich.map((value, key) => {
+                                return(
+                                    <div className="sandwich-card" onClick={(() => {
                                         navigate(`/sandwiches/${value.id}`, { state: { currentUser: user }})})}>
-                                    <div>
                                         <Image
                                             className="restaurant-sandwich-image"
                                             src={value.image}
                                             alt = {value.sandwich_name}
                                             rounded
                                         ></Image>
+                                        <h2>{value.sandwich_name}</h2>
                                     </div>
-                                    <div>
-                                        {value.sandwich_name}
-                                    </div>
-                                </a>
-                            )
-                        })}
+                                )
+                            })}
+                        </div>
                     </div>
                 </div>
             </div>
