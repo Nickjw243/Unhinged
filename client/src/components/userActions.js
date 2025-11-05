@@ -18,13 +18,3 @@ export const logout = () => {
         type: 'LOGOUT'
     }
 };
-
-// export const updateUsername = (username) => {
-
-//     localStorage.setItem('user', JSON.stringify(username));
-
-//     return {
-//         type: 'UPDATE_USERNAME',
-//         payload: username
-//     }
-// }
